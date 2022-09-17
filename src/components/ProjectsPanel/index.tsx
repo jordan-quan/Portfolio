@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { cacheImages } from 'utils/cacheImages'
 import PerspectiveCard from 'components/PerspectiveCard'
-import Button from 'components/Button'
+import { Card } from 'ts/interfaces'
 
 import * as styles from './styles'
 
-interface Card {
-  link: string
-  title: string
-  subtitle: string
-  year: number
-  imagePath: string
+type ProjectsPanelProps = {
+  cardList: Card[]
 }
 
-interface Props {
-  data: Card[]
-}
-
-const ProjectsPanel = ({ data }: Props) => {
+const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
   useEffect(() => {
-    cacheImages(data.map(({ imagePath }) => imagePath))
+    cacheImages(cardList.map(({ imagePath }) => imagePath))
   }, [])
 
   return (
     <styles.Gallery>
+      <styles.HeaderContent>
+        <styles.Title>Crafted with love.</styles.Title>
+        <styles.Subtitle>These are some of my recent works.</styles.Subtitle>
+      </styles.HeaderContent>
       <styles.Cards>
-        {data.map((cardProps) => (
+        {cardList.map((cardProps) => (
           <styles.Card>
             <PerspectiveCard {...cardProps} />
           </styles.Card>

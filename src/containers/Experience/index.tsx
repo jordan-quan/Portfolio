@@ -1,9 +1,90 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 
-const ContactContainer = () => (
-  <div>
-    
-  </div>
-);
+import { EXPERIENCES } from 'constants/experiences'
+import { useParams, Link } from 'react-router-dom'
 
-export default ContactContainer;
+import * as styles from './styles'
+import { getTimeframeYears } from 'utils'
+
+const ExperienceContainer = () => {
+  const { id: route } = useParams()
+  const list = EXPERIENCES.filter(({ display }) => display)
+
+  const index = list.findIndex(({ id }) => id === route)
+  const experience = list[index]
+
+  const nextIndex = (index + 1) % list.length
+  const prevIndex = index === 0 ? list.length - 1 : index - 1
+
+  const next = list[nextIndex]
+  const previous = list[prevIndex]
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [index])
+
+  if (experience === undefined) return <></>
+
+  const {
+    id,
+    employer,
+    position,
+    images,
+    timeline,
+    logo,
+    mainImage,
+    colours,
+    description,
+    stack,
+    tasks,
+    acheivements
+  } = experience
+
+  return (
+    <>
+      <styles.Jumbotron>
+        <styles.Image src={mainImage} />
+
+        <styles.Header>
+          <styles.Title>{employer}</styles.Title>
+          <styles.Subtitle>{position}</styles.Subtitle>
+        </styles.Header>
+      </styles.Jumbotron>
+
+      <styles.Content>
+        <styles.Image2 src={images ? images[0] : mainImage} />
+        <styles.Details>
+          <styles.Text>{description}</styles.Text>
+          <styles.TextHeader>Timeline</styles.TextHeader>
+          <styles.Text>{getTimeframeYears(timeline[0])}</styles.Text>
+          <styles.TextHeader>Tasks</styles.TextHeader>
+          <styles.List>
+            <styles.Text>
+              {tasks.map((task) => (
+                <styles.ListItem>{task}</styles.ListItem>
+              ))}
+            </styles.Text>
+          </styles.List>
+          <styles.TextHeader>Impacts</styles.TextHeader>
+          <styles.List>
+            <styles.Text>
+              {acheivements.map((acheivement) => (
+                <styles.ListItem>{acheivement}</styles.ListItem>
+              ))}
+            </styles.Text>
+          </styles.List>
+        </styles.Details>
+      </styles.Content>
+
+      <Link to={`/${previous.url}`} style={{ float: 'left' }}>
+        Previous
+      </Link>
+
+      <Link to={`/${next.url}`} style={{ float: 'right' }}>
+        Next
+      </Link>
+    </>
+  )
+}
+
+export default ExperienceContainer

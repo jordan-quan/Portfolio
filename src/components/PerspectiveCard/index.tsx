@@ -1,20 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react'
-import useWindowDimensions from 'utils/useWindowDimensions'
-import { animate, useMotionValue, useTransform, transform, useAnimation } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
+import { useMotionValue, useTransform, transform, useAnimation } from 'framer-motion'
 
+import useWindowDimensions from 'utils/useWindowDimensions'
+import { Card } from 'ts/interfaces'
 import * as styles from './styles'
 
-interface Card {
-  link: string
-  title: string
-  subtitle: string
-  year: number
-  imagePath: string
-}
-
-const PerspectiveCard = ({ title, subtitle, year, link, imagePath }: Card) => {
+const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours }: Card) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [isHovered, setHovered] = useState(false)
   const [entryCount, setEntryCount] = useState(0)
   const controls = useAnimation()
 
@@ -43,10 +35,13 @@ const PerspectiveCard = ({ title, subtitle, year, link, imagePath }: Card) => {
     const rotateXbounded = 1 - (e.clientY - bounds.y) / e.currentTarget.clientHeight
     const rotateYbounded = (e.clientX - bounds.x) / e.currentTarget.clientWidth
 
+    const rX = transform(rotateXbounded, [0, 1], [-angle, angle])
+    const rY = transform(rotateYbounded, [0, 1], [-angle, angle])
+
     if (entryCount < 50) {
       controls.start({
-        rotateX: transform(rotateXbounded, [0, 1], [-angle, angle]),
-        rotateY: transform(rotateYbounded, [0, 1], [-angle, angle]),
+        rotateX: rX,
+        rotateY: rY,
         transition: {
           duration: 0.03
         }
@@ -54,24 +49,32 @@ const PerspectiveCard = ({ title, subtitle, year, link, imagePath }: Card) => {
       setEntryCount(entryCount + 1)
     } else {
       controls.start({
-        rotateX: transform(rotateXbounded, [0, 1], [-angle, angle]),
-        rotateY: transform(rotateYbounded, [0, 1], [-angle, angle]),
+        rotateX: rX,
+        rotateY: rY,
         transition: {
           duration: 0.01
         }
       })
     }
   }
-  const { width, height } = dimensions
 
   const CardTextVariants = {
     initial: {
       scale: 1
     },
     hover: {
-      scaleX: (width - borderWidth) / width,
-      scaleY: (height - borderWidth) / height,
+      scaleX: (dimensions.width - borderWidth) / dimensions.width,
+      scaleY: (dimensions.height - borderWidth) / dimensions.height,
       transition: styles.Transition
+    }
+  }
+
+  const OverlayVariants = {
+    initial: {
+      opacity: 0
+    },
+    hover: {
+      opacity: 1
     }
   }
 
@@ -96,8 +99,9 @@ const PerspectiveCard = ({ title, subtitle, year, link, imagePath }: Card) => {
     <styles.Link ref={cardRef} to={link}>
       <styles.PerspectiveWrapper>
         <styles.Card
+          initial="initial"
           whileHover="hover"
-          onMouseEnter={() => setHovered(true)}
+          colours={colours}
           onMouseLeave={() => {
             controls.start({
               rotateX: 0.5,
@@ -107,13 +111,15 @@ const PerspectiveCard = ({ title, subtitle, year, link, imagePath }: Card) => {
               }
             })
             setEntryCount(0)
-            setHovered(false)
           }}
           onPointerMove={onMove}
           style={{ rotateX, rotateY }}
           animate={controls}>
           <styles.CardText variants={CardTextVariants} transition={styles.Transition}>
-            <styles.Overlay isHovered={isHovered} />
+            <styles.Overlay
+              variants={OverlayVariants}
+              transition={{ duration: 0.8, ease: [0.03, 0.98, 0.52, 1], delay: 0.2 }}
+            />
             <styles.Circle>
               <styles.Image
                 src={imagePath}
@@ -123,13 +129,15 @@ const PerspectiveCard = ({ title, subtitle, year, link, imagePath }: Card) => {
               />
             </styles.Circle>
           </styles.CardText>
-          <styles.Info>
-            <h5>{year}</h5>
+          <styles.Info
+            variants={styles.InfoVariants}
+            transition={{ duration: 0.8, ease: [0.77, 0, 0.175, 1] }}>
+            <styles.Text>{timeframe}</styles.Text>
             <div>
-              <h2>{title}</h2>
-              <h5>{subtitle}</h5>
+              <styles.Title>{title}</styles.Title>
+              <styles.Text>{subtitle}</styles.Text>
             </div>
-            <h5>see the project</h5>
+            <styles.Text>see the project</styles.Text>
           </styles.Info>
         </styles.Card>
       </styles.PerspectiveWrapper>

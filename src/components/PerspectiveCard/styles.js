@@ -22,9 +22,8 @@ export const Card = styled(motion.div)`
   margin: auto;
   margin-bottom: 4rem;
   position: relative;
-  // background-image: linear-gradient(0deg, rgb(238, 9, 121) 0rem, rgb(255, 106, 0));
-  background-image: linear-gradient(0deg, #8a5082 0rem, #ff7b89);
-  background-image: linear-gradient(0deg, #ff8474 0rem, #ffc996);
+  background-image: ${({ colours: { primary, secondary } }) =>
+    `linear-gradient(0deg, ${primary} 0rem, ${secondary})`};
 `
 
 export const PerspectiveWrapper = styled.div`
@@ -69,12 +68,12 @@ export const Circle = styled.div`
     display: block;
     width: 150%;
     height: 150%;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255, 255, 255, 0) 50%,
-      rgba(0, 0, 0, 1) 100%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
+    // background: radial-gradient(
+    //   ellipse at center,
+    //   rgba(255, 255, 255, 0) 50%,
+    //   rgba(0, 0, 0, 1) 100%,
+    //   rgba(0, 0, 0, 0.5) 100%
+    // );
     border-radius: 50%;
     position: absolute;
     top: -25%;
@@ -82,19 +81,18 @@ export const Circle = styled.div`
   }
 `
 
-export const Overlay = styled.div`
+export const Overlay = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
   z-index: 2;
   background: rgba(0, 0, 0, 0.6);
-  opacity: ${({ isHovered }) => (isHovered ? 1 : 0)};
-  transition: all 800ms cubic-bezier(0.03, 0.98, 0.52, 1) 0.2s;
 `
 
-export const Info = styled.div`
+export const Info = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
@@ -108,12 +106,30 @@ export const Info = styled.div`
   justify-content: space-between;
   z-index: 3;
   opacity: 0;
-  transform: translate(1rem, 1rem) scale(0.95);
+`
 
-  transition: all 800ms cubic-bezier(0.03, 0.98, 0.52, 1) 0.2s;
-
-  :hover {
-    opacity: 1;
-    transform: translate(0rem, 0rem) scale(1);
+export const InfoVariants = {
+  initial: {
+    opacity: 0,
+    scale: 0.95,
+    x: '1rem',
+    y: '1rem'
+  },
+  hover: {
+    opacity: 1,
+    scale: 1,
+    x: 0,
+    y: 0
   }
+}
+
+export const Title = styled.h2`
+  text-transform: lowercase;
+  margin-bottom: 12px;
+`
+
+export const Text = styled.h4`
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 100;
 `
