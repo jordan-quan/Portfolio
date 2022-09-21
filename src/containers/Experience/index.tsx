@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { EXPERIENCES } from 'constants/experiences'
-import { useParams, Link } from 'react-router-dom'
-
+import { getTimeframeYears, cacheImages } from 'utils'
+import Pagination from 'components/Pagination'
 import * as styles from './styles'
-import { getTimeframeYears } from 'utils'
+import HomeButton from 'components/HomeButton'
 
 const ExperienceContainer = () => {
   const { id: route } = useParams()
@@ -22,6 +23,13 @@ const ExperienceContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [index])
+
+  useEffect(() => {
+    if (experience) {
+      const { mainImage, images } = experience
+      cacheImages([mainImage, ...(images ? images : [])])
+    }
+  }, [experience])
 
   if (experience === undefined) return <></>
 
@@ -42,6 +50,7 @@ const ExperienceContainer = () => {
 
   return (
     <>
+      <HomeButton />
       <styles.Jumbotron>
         <styles.Image src={mainImage} />
 
@@ -76,13 +85,22 @@ const ExperienceContainer = () => {
         </styles.Details>
       </styles.Content>
 
-      <Link to={`/${previous.url}`} style={{ float: 'left' }}>
-        Previous
-      </Link>
-
-      <Link to={`/${next.url}`} style={{ float: 'right' }}>
-        Next
-      </Link>
+      <Pagination
+        previous={{
+          title: previous.employer,
+          imagePath: previous.mainImage,
+          link: previous.url,
+          colours: previous.colours
+        }}
+        next={{
+          title: next.employer,
+          imagePath: next.mainImage,
+          link: next.url,
+          colours: next.colours
+        }}
+        color={colours.primary}
+        type="experience"
+      />
     </>
   )
 }

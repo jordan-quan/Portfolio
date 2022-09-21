@@ -38,8 +38,7 @@ export const Content = styled.div`
   justify-content: center;
   font-size: 16px;
   padding: 0px 120px;
-  margin: auto;
-  margin-bottom: 100px;
+  margin: 0px 75px 100px;
 `
 
 export const ListItem = styled.li`

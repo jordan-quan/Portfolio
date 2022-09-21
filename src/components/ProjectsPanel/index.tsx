@@ -17,7 +17,7 @@ const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
   return (
     <styles.Gallery>
       <styles.HeaderContent>
-        <styles.Title>Crafted with love.</styles.Title>
+        <styles.Title>Created with passion.</styles.Title>
         <styles.Subtitle>These are some of my recent works.</styles.Subtitle>
       </styles.HeaderContent>
       <styles.Cards>

@@ -1,24 +1,9 @@
-import { CardColours } from 'ts/interfaces'
+import { Project } from 'ts/interfaces'
 
 import pdfImage from 'assets/images/projects/pdfsplitter/pdfsplitter.jpg'
 import portfolioImage from 'assets/images/projects/portfolio/portfolio.jpg'
 import lcboImage from 'assets/images/projects/LCBO/lcbo.jpeg'
 import telus from 'assets/images/experiences/Telus/telusphone.jpeg'
-
-interface Project {
-  display: boolean
-  name: string
-  id: string
-  url: string
-  tasks: string[]
-  description: string
-  subtitle: string
-  stack: string[]
-  imagePath: string
-  github?: string
-  year: number
-  colours: CardColours
-}
 
 export const PROJECTS: Project[] = [
   {
@@ -31,7 +16,7 @@ export const PROJECTS: Project[] = [
       secondary: '#a2bbda'
     },
     year: 2019,
-    id: 'pdf',
+    id: 'pdfsplitter',
     tasks: [
       'Discuss requirements with the End Users',
       'Enforced an object-oriented design pattern',
@@ -42,7 +27,7 @@ export const PROJECTS: Project[] = [
     ],
     stack: ['Node JS', 'Express', 'IIS', 'MySQL', 'Powershell', 'C#', 'Bootstrap'],
     description: 'A web app for legal staff to automate partitioning of large legal documents',
-    imagePath: pdfImage
+    mainImage: pdfImage
   },
   {
     display: true,
@@ -68,13 +53,13 @@ export const PROJECTS: Project[] = [
     ],
     description: 'A Personal Portfolio Website to highlight my achievements as a developer',
     github: 'https://github.com/jordan-quan/Portfolio',
-    imagePath: portfolioImage
+    mainImage: portfolioImage
   },
 
   {
     display: true,
-    name: 'LCBO',
-    subtitle: 'Node JS Script',
+    name: 'LCBO script',
+    subtitle: 'Node JS script',
     colours: {
       primary: '#50795a',
       secondary: '#96af8d'
@@ -93,6 +78,6 @@ export const PROJECTS: Project[] = [
     description:
       "A Node JS script to consolidate LCBO's monthly winery report files into a database.",
     github: 'https://github.com/jordan-quan/lcbo',
-    imagePath: lcboImage
+    mainImage: lcboImage
   }
 ]

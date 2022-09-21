@@ -7,15 +7,14 @@ import { getTimeframeYears } from 'utils'
 import Timeline from 'components/Timeline'
 import ProjectsPanel from 'components/ProjectsPanel'
 import Jumbotron from 'components/Jumbotron'
-import Footer from 'components/Footer'
 import * as styles from './styles'
-import HomeButton from 'components/HomeButton'
 
 const App = () => {
-  const cards: Card[] = PROJECTS.map(({ name, url, year, ...rest }) => ({
+  const cards: Card[] = PROJECTS.map(({ name, url, year, mainImage, ...rest }) => ({
     link: url,
     title: name,
     timeframe: year.toString(),
+    imagePath: mainImage,
     ...rest
   }))
 
@@ -40,8 +39,28 @@ const App = () => {
       <Timeline cardList={experienceCards} />
       {/* <Gallery data={cards} /> */}
       <ProjectsPanel cardList={cards} />
-
-      <Footer />
+      <styles.Footer>
+        <styles.Line>
+          <styles.FooterText>
+            Let's work together, don't hesitate to{' '}
+            <styles.ColorText to="/contact">say hi</styles.ColorText>
+          </styles.FooterText>
+        </styles.Line>
+        <styles.FooterLinks>
+          <styles.Trademark>© 2022 - ALL RIGHTS RESERVED - Jordan Quan 2022</styles.Trademark>
+          <styles.SocialSection>
+            <styles.Social href="https://github.com/jordan-quan" target="blank">
+              Github
+            </styles.Social>
+            <styles.Social href="https://www.linkedin.com/in/jordan-quan" target="blank">
+              Linkedin
+            </styles.Social>
+            <styles.Social href="https://www.instagram.com/jordanquannn" target="blank">
+              Instagram
+            </styles.Social>
+          </styles.SocialSection>
+        </styles.FooterLinks>
+      </styles.Footer>
     </styles.Container>
   )
 }

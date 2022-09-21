@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-
 import { Link } from 'react-router-dom'
+
+import { Arrow } from 'assets/svg'
 import * as styles from './styles'
 
 interface ButtonProps {
@@ -10,8 +11,6 @@ interface ButtonProps {
 
 const Button = ({ text, link }: ButtonProps) => {
   const width = text.length * 12 + 60
-
-  console.log(text.length, text)
 
   const variants = {
     initial: { pathLength: 0 },
@@ -37,17 +36,6 @@ const Button = ({ text, link }: ButtonProps) => {
     </svg>
   )
 
-  const ArrowSvg = () => (
-    <svg
-      width="24"
-      height="24"
-      xmlns="http://www.w3.org/2000/svg"
-      fill-rule="evenodd"
-      clip-rule="evenodd">
-      <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
-    </svg>
-  )
-
   return (
     <Link to={link}>
       <styles.Button
@@ -57,7 +45,7 @@ const Button = ({ text, link }: ButtonProps) => {
         <styles.Content>
           <styles.Text>{text}</styles.Text>
           <styles.ArrowWrapper>
-            <ArrowSvg />
+            <Arrow />
           </styles.ArrowWrapper>
         </styles.Content>
         <styles.CircleWrapper>

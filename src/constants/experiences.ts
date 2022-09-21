@@ -14,24 +14,7 @@ import telusBuilding from 'assets/images/experiences/Telus/telusBuilding.jpg'
 
 import markhamLogo from 'assets/images/experiences/Markham/markham.jpeg'
 
-import { Timeframe, CardColours } from 'ts/interfaces'
-
-interface Experience {
-  id: string
-  display: boolean
-  position: string
-  employer: string
-  url: string
-  tasks: string[]
-  description: string
-  stack: string[]
-  logo: string
-  mainImage: string
-  acheivements: string[]
-  timeline: Timeframe[]
-  colours: CardColours
-  images?: string[]
-}
+import { Experience } from 'ts/interfaces'
 
 export const EXPERIENCES: Experience[] = [
   {

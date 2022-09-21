@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import App from 'containers/App'
 import Experience from 'containers/Experience'
-import HomeButton from 'components/HomeButton'
+import ProjectContainer from 'containers/Projects'
 import reportWebVitals from './reportWebVitals'
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +14,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/experiences/:id" element={<Experience />} />
+        <Route path="/projects/:id" element={<ProjectContainer />} />
       </Routes>
     </Router>
   </React.StrictMode>,
