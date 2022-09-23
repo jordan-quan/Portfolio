@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link as RouterLink } from 'react-router-dom'
+import AnimatedText from 'components/AnimatedText'
 
 export const Link = styled(RouterLink)`
   position: relative;
@@ -16,7 +17,7 @@ export const CardWrapper = styled(motion.div)`
   height: 100%;
 `
 
-export const Card = styled(motion.div)`
+export const Card = styled(AnimatedText)`
   position: relative;
   border-bottom: 1px solid #e8e8e8;
   width: 100%;
@@ -84,7 +85,6 @@ export const CardInfo = styled(motion.div)`
   font-size: 20px;
   color: #999999;
   z-index: 4;
-  background: #f8f8f8;
 `
 
 export const BranchWrapperVariants = {
@@ -108,21 +108,14 @@ export const CardInfoVariants = {
     scale: 1.1,
     x: '60px',
     y: '5.5px',
-    color: '#363636',
-    background: 'white'
+    color: '#363636'
   }
-}
-
-export const BranchVariants = {
-  initial: { pathLength: 0, display: 'none' },
-  animate: { pathLength: 0.8, display: 'block' }
 }
 
 export const Backdrop = styled(motion.div)`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #f8f8f8;
 `
 
 export const BranchWrapper = styled(motion.div)`

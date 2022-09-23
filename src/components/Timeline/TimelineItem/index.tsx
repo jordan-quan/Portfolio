@@ -1,21 +1,19 @@
-import { motion } from 'framer-motion'
-
 import { Card } from 'ts/interfaces'
 import Button from 'components/Button'
+import TimelineBranch from 'components/TimelineBranch'
 import * as styles from './styles'
 
 type TimelineItemProps = {
   card: Card
   index: number
+  setMinPathLength: (minLength: number) => void
 }
 
 const TimelineItem = ({
   card: { title, subtitle, timeframe, link, imagePath, colours },
-  index
+  index,
+  setMinPathLength
 }: TimelineItemProps) => {
-  const transition = { duration: 1, ease: 'easeInOut', delay: [0, 2.75, 4.4][index] }
-  const cardTransition = { duration: 1, ease: 'easeInOut', delay: [0, 3.5, 5][index] }
-
   const Svg = () => (
     <svg viewBox="0 0 430 300" width="100%" height="100%">
       <defs>
@@ -33,31 +31,32 @@ const TimelineItem = ({
     </svg>
   )
 
-  const Branch = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100%">
-      <motion.path
-        d={index === 0 ? 'M 85 80 H 17' : 'M 30 80 H 100'}
-        // d="M 100 80 H 30" if first branch
-        fill="transparent"
-        strokeWidth="10"
-        stroke="#D9D9D9"
-        strokeLinecap="round"
-        variants={styles.BranchVariants}
-        transition={transition}
-      />
-    </svg>
-  )
-
   return (
     <styles.Link to={link}>
       <styles.CardWrapper whileHover="hover" initial="initial" animate="animate">
         <styles.BranchWrapper
           variants={styles.BranchWrapperVariants}
           transition={styles.ImageTransition}>
-          <Branch />
+          <TimelineBranch
+            index={index}
+            onAnimated={() => {
+              if (index === 0) {
+                setTimeout(() => {
+                  setMinPathLength(0)
+                }, 400)
+              } else setMinPathLength(index / 2)
+            }}
+          />
         </styles.BranchWrapper>
-        <styles.Card initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={cardTransition}>
-          <styles.Backdrop variants={{ hover: { background: 'white' } }} />
+        <styles.Card
+          tag="div"
+          offset={index === 0 ? '-300px' : '-500px'}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}>
+          <styles.Backdrop
+            variants={{ initial: { background: '#f8f8f8' }, hover: { background: '#ffffff' } }}
+            transition={{ duration: 0.1 }}
+          />
           <styles.Content>
             <styles.CardInfo
               index={index}

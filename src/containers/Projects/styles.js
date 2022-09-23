@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Title = styled.h1`
@@ -81,3 +82,4 @@ export const Jumbotron = styled.div`
   width: 100%;
   height: 100%;
 `
+export const Container = styled(motion.div)``

@@ -1,4 +1,7 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
+
+export const Container = styled(motion.div)``
 
 export const Title = styled.h1`
   text-transform: lowercase;
@@ -20,14 +23,14 @@ export const Header = styled.div`
   color: #363636;
 `
 
-export const Image = styled.img`
+export const Image = styled(motion.img)`
   width: 450px;
   height: 600px;
   margin: 0px auto;
   object-fit: cover;
 `
 
-export const Image2 = styled.img`
+export const Image2 = styled(motion.img)`
   width: 60%;
   margin: 0px auto;
   object-fit: cover;
@@ -74,7 +77,7 @@ export const Details = styled.div`
   margin-bottom: 5px;
 `
 
-export const Jumbotron = styled.div`
+export const Jumbotron = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;

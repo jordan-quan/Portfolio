@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import AnimatedText from 'components/AnimatedText'
 
-export const Cards = styled.div`
+export const Cards = styled(AnimatedText)`
   display: flex;
   width: 85%;
   flex-wrap: nowrap;
@@ -50,14 +51,13 @@ export const HeaderContent = styled.div`
   text-align: center;
 `
 
-export const Title = styled.h1`
-  // text-transform: lowercase;
+export const Title = styled(AnimatedText)`
   font-size: 40px;
   font-weight: 600;
   margin: 7px 0px 15px 0px;
 `
 
-export const Subtitle = styled.h4`
+export const Subtitle = styled(AnimatedText)`
   font-weight: 200;
   font-size: 16px;
 `

@@ -21,10 +21,6 @@ const ProjectContainer = () => {
   const previous = list[prevIndex]
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [index])
-
-  useEffect(() => {
     if (project) {
       const { mainImage, images } = project
       cacheImages([mainImage, ...(images ? images : [])])
@@ -49,7 +45,11 @@ const ProjectContainer = () => {
   } = project
 
   return (
-    <>
+    <styles.Container
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}>
       <HomeButton />
       <styles.Jumbotron>
         <styles.Image src={mainImage} />
@@ -69,16 +69,16 @@ const ProjectContainer = () => {
           <styles.TextHeader>Tasks</styles.TextHeader>
           <styles.List>
             <styles.Text>
-              {tasks.map((task) => (
-                <styles.ListItem>{task}</styles.ListItem>
+              {tasks.map((task, index) => (
+                <styles.ListItem key={index.toString()}>{task}</styles.ListItem>
               ))}
             </styles.Text>
           </styles.List>
           <styles.TextHeader>Tech Stack</styles.TextHeader>
           <styles.List>
             <styles.Text>
-              {stack.map((tech) => (
-                <styles.ListItem>{tech}</styles.ListItem>
+              {stack.map((tech, index) => (
+                <styles.ListItem key={index.toString()}>{tech}</styles.ListItem>
               ))}
             </styles.Text>
           </styles.List>
@@ -101,7 +101,7 @@ const ProjectContainer = () => {
         color={colours.primary}
         type="project"
       />
-    </>
+    </styles.Container>
   )
 }
 

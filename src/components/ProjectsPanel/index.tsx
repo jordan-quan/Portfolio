@@ -17,12 +17,12 @@ const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
   return (
     <styles.Gallery>
       <styles.HeaderContent>
-        <styles.Title>Created with passion.</styles.Title>
-        <styles.Subtitle>These are some of my recent works.</styles.Subtitle>
+        <styles.Title tag="h1">Created with passion.</styles.Title>
+        <styles.Subtitle tag="h4">These are some of my recent works.</styles.Subtitle>
       </styles.HeaderContent>
-      <styles.Cards>
+      <styles.Cards tag="div">
         {cardList.map((cardProps) => (
-          <styles.Card>
+          <styles.Card key={cardProps.title}>
             <PerspectiveCard {...cardProps} />
           </styles.Card>
         ))}

@@ -1,21 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import App from 'containers/App'
-import Experience from 'containers/Experience'
-import ProjectContainer from 'containers/Projects'
+import App from 'containers'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      {/* <HomeButton /> */}
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/experiences/:id" element={<Experience />} />
-        <Route path="/projects/:id" element={<ProjectContainer />} />
-      </Routes>
+      <App />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

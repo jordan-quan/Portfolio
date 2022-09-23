@@ -9,7 +9,7 @@ import ProjectsPanel from 'components/ProjectsPanel'
 import Jumbotron from 'components/Jumbotron'
 import * as styles from './styles'
 
-const App = () => {
+const Home = () => {
   const cards: Card[] = PROJECTS.map(({ name, url, year, mainImage, ...rest }) => ({
     link: url,
     title: name,
@@ -34,7 +34,11 @@ const App = () => {
   }, [])
 
   return (
-    <styles.Container>
+    <styles.Container
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}>
       <Jumbotron />
       <Timeline cardList={experienceCards} />
       {/* <Gallery data={cards} /> */}
@@ -65,4 +69,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Home

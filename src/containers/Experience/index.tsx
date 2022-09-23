@@ -21,10 +21,6 @@ const ExperienceContainer = () => {
   const previous = list[prevIndex]
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [index])
-
-  useEffect(() => {
     if (experience) {
       const { mainImage, images } = experience
       cacheImages([mainImage, ...(images ? images : [])])
@@ -49,9 +45,13 @@ const ExperienceContainer = () => {
   } = experience
 
   return (
-    <>
+    <styles.Container
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}>
       <HomeButton />
-      <styles.Jumbotron>
+      <styles.Jumbotron key={id}>
         <styles.Image src={mainImage} />
 
         <styles.Header>
@@ -69,16 +69,16 @@ const ExperienceContainer = () => {
           <styles.TextHeader>Tasks</styles.TextHeader>
           <styles.List>
             <styles.Text>
-              {tasks.map((task) => (
-                <styles.ListItem>{task}</styles.ListItem>
+              {tasks.map((task, index) => (
+                <styles.ListItem key={index.toString()}>{task}</styles.ListItem>
               ))}
             </styles.Text>
           </styles.List>
           <styles.TextHeader>Impacts</styles.TextHeader>
           <styles.List>
             <styles.Text>
-              {acheivements.map((acheivement) => (
-                <styles.ListItem>{acheivement}</styles.ListItem>
+              {acheivements.map((acheivement, index) => (
+                <styles.ListItem key={index.toString()}>{acheivement}</styles.ListItem>
               ))}
             </styles.Text>
           </styles.List>
@@ -101,7 +101,8 @@ const ExperienceContainer = () => {
         color={colours.primary}
         type="experience"
       />
-    </>
+    </styles.Container>
+    // </AnimatePresence>
   )
 }
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import AnimatedText from 'components/AnimatedText'
 
 export const Cards = styled.div`
   width: 100%;
@@ -23,14 +24,14 @@ export const HeaderContent = styled.div`
   color: #363636;
 `
 
-export const Title = styled.h1`
+export const Title = styled(AnimatedText)`
   text-transform: lowercase;
   font-size: 40px;
   font-weight: 600;
   margin: 7px 0px 15px 0px;
 `
 
-export const Subtitle = styled.h4`
+export const Subtitle = styled(AnimatedText)`
   font-weight: 200;
   font-size: 16px;
 `

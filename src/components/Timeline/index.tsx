@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useScroll, useSpring } from 'framer-motion'
 
 import { cacheImages } from 'utils/cacheImages'
 import TimelineItem from 'components/Timeline/TimelineItem'
@@ -12,29 +12,39 @@ type TimelineProps = {
 }
 
 const Timeline = ({ cardList }: TimelineProps) => {
-  const transition = {
-    duration: 3.5,
-    ease: 'easeInOut',
-    delay: 1
-  }
+  const galleryRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: galleryRef,
+    offset: ['500px end', `110% end`]
+  })
 
   const lineLength = 281 * (cardList.length - 1) + 80
 
-  const Line = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
-      <motion.path
-        d={`M 30 80 V ${lineLength}`}
-        // d="M 100 80 V 30" if first branch
+  const [pathDone, setPathDone] = useState(false)
+  const [minPathLength, setMinPathLength] = useState(-1)
 
-        strokeWidth="10"
-        stroke="#D9D9D9"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, display: 'none' }}
-        animate={{ pathLength: 1, display: 'block' }}
-        transition={transition}
-      />
-    </svg>
-  )
+  const scrollY = useSpring(scrollYProgress, {
+    stiffness: 1000,
+    damping: 100,
+    restDelta: 0.001
+  })
+
+  useEffect(() => {
+    function updateLength() {
+      const y = scrollYProgress.get()
+      scrollYProgress.set(y < minPathLength ? minPathLength : y)
+      if (scrollY.get() === 1) {
+        setPathDone(true)
+        unsubscribeY()
+      }
+    }
+
+    const unsubscribeY = scrollYProgress.onChange(updateLength)
+
+    return () => {
+      unsubscribeY()
+    }
+  }, [minPathLength])
 
   useEffect(() => {
     cacheImages(cardList.map(({ imagePath }) => imagePath))
@@ -44,17 +54,44 @@ const Timeline = ({ cardList }: TimelineProps) => {
     <styles.Container>
       <styles.Header>
         <styles.HeaderContent>
-          <styles.Title>my journey through the years...</styles.Title>
-          <styles.Subtitle>These are a few of my endevours over the recent years.</styles.Subtitle>
+          <styles.Title tag="h1">my journey through the years...</styles.Title>
+          <styles.Subtitle tag="h4">
+            These are a few of my endevours over the recent years.
+          </styles.Subtitle>
         </styles.HeaderContent>
       </styles.Header>
       <styles.Gallery>
-        <styles.LineWrapper>
-          <Line />
+        <styles.LineWrapper ref={galleryRef}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
+            (
+            <motion.path
+              d={`M 30 80 V ${lineLength}`}
+              stroke="#D9D9D9"
+              strokeLinecap="round"
+              style={{
+                pathLength: pathDone ? 1 : scrollY
+              }}
+              animate={{ strokeWidth: minPathLength >= 0 ? 10 : 0 }}
+              transition={{ duration: 0.1, ease: 'easeInOut' }}
+            />
+            )
+          </svg>
         </styles.LineWrapper>
         <styles.Cards>
           {cardList.map((card, index) => (
-            <TimelineItem card={card} index={index} />
+            <TimelineItem
+              key={card.title}
+              setMinPathLength={(value) =>
+                setMinPathLength((minLength) => {
+                  if (value > minLength) {
+                    return value
+                  }
+                  return minLength
+                })
+              }
+              card={card}
+              index={index}
+            />
           ))}
         </styles.Cards>
       </styles.Gallery>
