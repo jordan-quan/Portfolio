@@ -63,18 +63,21 @@ const Timeline = ({ cardList }: TimelineProps) => {
       <styles.Gallery>
         <styles.LineWrapper ref={galleryRef}>
           <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
-            (
             <motion.path
               d={`M 30 80 V ${lineLength}`}
               stroke="#D9D9D9"
+              strokeWidth={10}
               strokeLinecap="round"
+              initial={{ scaleY: 0 }}
+              animate={minPathLength >= 0 && { scaleY: 1 }}
               style={{
-                pathLength: pathDone ? 1 : scrollY
+                pathLength: pathDone ? 1 : scrollY,
+                transformBox: 'fill-box',
+                originX: '0px',
+                originY: '0px'
               }}
-              animate={{ strokeWidth: minPathLength >= 0 ? 10 : 0 }}
-              transition={{ duration: 0.1, ease: 'easeInOut' }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
             />
-            )
           </svg>
         </styles.LineWrapper>
         <styles.Cards>
