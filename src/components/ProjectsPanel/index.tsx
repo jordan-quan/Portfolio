@@ -12,6 +12,7 @@ type ProjectsPanelProps = {
 const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
   useEffect(() => {
     cacheImages(cardList.map(({ imagePath }) => imagePath))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
