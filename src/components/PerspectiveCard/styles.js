@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link as RouterLink } from 'react-router-dom'
+import AnimatedBlock from 'components/AnimatedBlock'
 
 export const Transition = {
   duration: 0.8,
@@ -18,15 +19,15 @@ export const Card = styled(motion.div)`
   background: white;
   width: 100%;
   height: 100%;
-  box-shadow: 1.5rem 2.5rem 5rem 1rem rgb(0 0 0 / 20%);
   margin: auto;
+  box-shadow: 1.5rem 2.5rem 5rem 1rem rgb(0 0 0 / 20%);
   margin-bottom: 4rem;
   position: relative;
   background-image: ${({ colours: { primary, secondary } }) =>
     `linear-gradient(0deg, ${primary} 0rem, ${secondary})`};
 `
 
-export const PerspectiveWrapper = styled.div`
+export const PerspectiveWrapper = styled(AnimatedBlock)`
   perspective: 500;
   width: 100%;
   height: 100%;

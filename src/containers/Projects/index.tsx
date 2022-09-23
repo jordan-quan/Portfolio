@@ -49,7 +49,7 @@ const ProjectContainer = () => {
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}>
+      transition={{ duration: 0.4 }}>
       <HomeButton />
       <styles.Jumbotron>
         <styles.Image src={mainImage} />

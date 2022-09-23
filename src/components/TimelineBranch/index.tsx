@@ -27,7 +27,7 @@ const TimelineBranch = ({ index, onAnimated }: HeadingProps) => {
           d={index === 0 ? 'M 85 80 H 17' : 'M 30 80 H 100'}
           fill="transparent"
           strokeWidth="10"
-          stroke="#D9D9D9"
+          stroke="#e5e5e5"
           strokeLinecap="round"
           initial={{ pathLength: 0, display: 'none' }}
           animate={isTextInView && { pathLength: 0.8, display: 'block' }}

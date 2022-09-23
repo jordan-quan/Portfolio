@@ -20,7 +20,7 @@ const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
         <styles.Title tag="h1">Created with passion.</styles.Title>
         <styles.Subtitle tag="h4">These are some of my recent works.</styles.Subtitle>
       </styles.HeaderContent>
-      <styles.Cards tag="div">
+      <styles.Cards>
         {cardList.map((cardProps) => (
           <styles.Card key={cardProps.title}>
             <PerspectiveCard {...cardProps} />

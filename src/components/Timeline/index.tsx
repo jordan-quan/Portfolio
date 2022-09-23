@@ -65,7 +65,7 @@ const Timeline = ({ cardList }: TimelineProps) => {
           <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
             <motion.path
               d={`M 30 80 V ${lineLength}`}
-              stroke="#D9D9D9"
+              stroke="#e5e5e5"
               strokeWidth={10}
               strokeLinecap="round"
               initial={{ scaleY: 0 }}

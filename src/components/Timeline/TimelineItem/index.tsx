@@ -50,7 +50,7 @@ const TimelineItem = ({
         </styles.BranchWrapper>
         <styles.Card
           tag="div"
-          offset={index === 0 ? '-300px' : '-500px'}
+          offset={index === 0 ? '-300px' : '-450px'}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}>
           <styles.Backdrop

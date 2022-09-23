@@ -97,7 +97,7 @@ const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours 
 
   return (
     <styles.Link ref={cardRef} to={link}>
-      <styles.PerspectiveWrapper>
+      <styles.PerspectiveWrapper tag="div">
         <styles.Card
           initial="initial"
           whileHover="hover"
@@ -120,14 +120,12 @@ const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours 
               variants={OverlayVariants}
               transition={{ duration: 0.8, ease: [0.03, 0.98, 0.52, 1], delay: 0.2 }}
             />
-            <styles.Circle>
-              <styles.Image
-                src={imagePath}
-                alt={title}
-                variants={ImageVariants}
-                transition={styles.Transition}
-              />
-            </styles.Circle>
+            <styles.Image
+              src={imagePath}
+              alt={title}
+              variants={ImageVariants}
+              transition={styles.Transition}
+            />
           </styles.CardText>
           <styles.Info
             variants={styles.InfoVariants}

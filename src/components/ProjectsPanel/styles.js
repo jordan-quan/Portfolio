@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import AnimatedText from 'components/AnimatedText'
 
-export const Cards = styled(AnimatedText)`
+export const Cards = styled.div`
   display: flex;
   width: 85%;
   flex-wrap: nowrap;
