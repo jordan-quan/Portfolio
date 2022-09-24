@@ -20,7 +20,6 @@ const Timeline = ({ cardList }: TimelineProps) => {
 
   const lineLength = 281 * (cardList.length - 1) + 80
 
-  const [pathDone, setPathDone] = useState(false)
   const [minPathLength, setMinPathLength] = useState(-1)
 
   const scrollY = useSpring(scrollYProgress, {
@@ -28,24 +27,6 @@ const Timeline = ({ cardList }: TimelineProps) => {
     damping: 100,
     restDelta: 0.001
   })
-
-  useEffect(() => {
-    function updateLength() {
-      const y = scrollYProgress.get()
-      scrollYProgress.set(y < minPathLength ? minPathLength : y)
-      if (scrollY.get() === 1) {
-        setPathDone(true)
-        unsubscribeY()
-      }
-    }
-
-    const unsubscribeY = scrollYProgress.onChange(updateLength)
-
-    return () => {
-      unsubscribeY()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [minPathLength])
 
   useEffect(() => {
     cacheImages(cardList.map(({ imagePath }) => imagePath))
@@ -62,25 +43,56 @@ const Timeline = ({ cardList }: TimelineProps) => {
         </styles.HeaderContent>
       </styles.Header>
       <styles.Gallery>
-        <styles.LineWrapper ref={galleryRef}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
-            <motion.path
-              d={`M 30 80 V ${lineLength}`}
-              stroke="#e5e5e5"
-              strokeWidth={10}
-              strokeLinecap="round"
-              initial={{ scaleY: 0 }}
-              animate={minPathLength >= 0 && { scaleY: 1 }}
-              style={{
-                pathLength: pathDone ? 1 : scrollY,
-                transformBox: 'fill-box',
-                originX: '0px',
-                originY: '0px'
-              }}
-              transition={{ duration: 0.2, ease: 'easeInOut' }}
-            />
-          </svg>
-        </styles.LineWrapper>
+        {minPathLength >= 0.5 && (
+          <styles.LineWrapper>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
+              <motion.path
+                d={`M 30 80 V ${lineLength}`}
+                stroke="#e5e5e5"
+                strokeWidth={10}
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: minPathLength }}
+                transition={{ duration: 0.1, ease: 'easeInOut' }}
+              />
+            </svg>
+          </styles.LineWrapper>
+        )}
+
+        {minPathLength !== 1 ? (
+          <styles.LineWrapper ref={galleryRef}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
+              <motion.path
+                d={`M 30 80 V ${lineLength}`}
+                stroke="#e5e5e5"
+                strokeWidth={10}
+                strokeLinecap="round"
+                initial={{ scaleY: 0 }}
+                animate={minPathLength >= 0 && { scaleY: 1 }}
+                style={{
+                  pathLength: scrollY,
+                  transformBox: 'fill-box',
+                  originY: '0px'
+                }}
+                exit={{ originY: '100%', scaleY: 0, transition: { duration: 3 } }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
+              />
+            </svg>
+          </styles.LineWrapper>
+        ) : (
+          <styles.LineWrapper>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100%">
+              <path
+                d={`M 30 80 V ${lineLength}`}
+                stroke="#e5e5e5"
+                strokeWidth={10}
+                strokeLinecap="round"
+                pathLength={1}
+              />
+            </svg>
+          </styles.LineWrapper>
+        )}
+
         <styles.Cards>
           {cardList.map((card, index) => (
             <TimelineItem
