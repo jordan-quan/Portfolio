@@ -69,7 +69,6 @@ const Timeline = ({ cardList }: TimelineProps) => {
                   transformBox: 'fill-box',
                   originY: '0px'
                 }}
-                exit={{ originY: '100%', scaleY: 0, transition: { duration: 3 } }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
               />
             </svg>

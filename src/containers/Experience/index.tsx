@@ -27,7 +27,7 @@ const ExperienceContainer = () => {
   if (experience === undefined) return <></>
 
   const {
-    id,
+    // id,
     employer,
     position,
     images,
@@ -48,15 +48,13 @@ const ExperienceContainer = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}>
       <HomeButton />
-      <styles.Jumbotron key={id}>
+      <styles.Jumbotron>
         <styles.Image src={mainImage} />
-
         <styles.Header>
           <styles.Title>{employer}</styles.Title>
           <styles.Subtitle>{position}</styles.Subtitle>
         </styles.Header>
       </styles.Jumbotron>
-
       <styles.Content>
         <styles.Image2Wrapper tag="div">
           <styles.Image2 tag="img" src={images ? images[0] : mainImage} />
