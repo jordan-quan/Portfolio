@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
 import { PROJECTS } from 'constants/projects'
 import { EXPERIENCES } from 'constants/experiences'
 import { Card } from 'ts/interfaces'
-import { getTimeframeYears } from 'utils'
+import { getTimeframeYears, cacheImages } from 'utils'
 import Timeline from 'components/Timeline'
 import ProjectsPanel from 'components/ProjectsPanel'
 import Jumbotron from 'components/Jumbotron'
@@ -26,6 +27,13 @@ const Home = () => {
       ...rest
     })
   )
+
+  useEffect(() => {
+    cacheImages([
+      ...experienceCards.map(({ imagePath }) => imagePath),
+      ...projectCards.map(({ imagePath }) => imagePath)
+    ])
+  }, [])
 
   return (
     <styles.Container
