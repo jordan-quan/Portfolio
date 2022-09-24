@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react'
-
 import { PROJECTS } from 'constants/projects'
 import { EXPERIENCES } from 'constants/experiences'
 import { Card } from 'ts/interfaces'
@@ -10,7 +8,7 @@ import Jumbotron from 'components/Jumbotron'
 import * as styles from './styles'
 
 const Home = () => {
-  const cards: Card[] = PROJECTS.map(({ name, url, year, mainImage, ...rest }) => ({
+  const projectCards: Card[] = PROJECTS.map(({ name, url, year, mainImage, ...rest }) => ({
     link: url,
     title: name,
     timeframe: year.toString(),
@@ -29,10 +27,6 @@ const Home = () => {
     })
   )
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   return (
     <styles.Container
       initial={{ opacity: 0, y: 100 }}
@@ -42,7 +36,7 @@ const Home = () => {
       <Jumbotron />
       <Timeline cardList={experienceCards} />
       {/* <Gallery data={cards} /> */}
-      <ProjectsPanel cardList={cards} />
+      <ProjectsPanel cardList={projectCards} />
       <styles.Footer>
         <styles.Line>
           <styles.FooterText>

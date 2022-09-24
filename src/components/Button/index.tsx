@@ -22,20 +22,6 @@ const Button = ({ text, link }: ButtonProps) => {
     hover: { x: '20px' }
   }
 
-  const Circle = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={`${width}px`} height="60px">
-      <motion.path
-        d={`M 25 29 H ${width * 0.85}`}
-        fill="transparent"
-        strokeWidth="50"
-        stroke="#D9D9D9"
-        strokeLinecap="round"
-        variants={variants}
-        transition={{ duration: 0.5, ease: [0.77, 0, 0.175, 1] }}
-      />
-    </svg>
-  )
-
   return (
     <Link to={link}>
       <styles.Button
@@ -49,7 +35,17 @@ const Button = ({ text, link }: ButtonProps) => {
           </styles.ArrowWrapper>
         </styles.Content>
         <styles.CircleWrapper>
-          <Circle />
+          <svg xmlns="http://www.w3.org/2000/svg" width={`${width}px`} height="60px">
+            <motion.path
+              d={`M 25 29 H ${width * 0.85}`}
+              fill="transparent"
+              strokeWidth="50"
+              stroke="#D9D9D9"
+              strokeLinecap="round"
+              variants={variants}
+              transition={{ duration: 0.5, ease: [0.77, 0, 0.175, 1] }}
+            />
+          </svg>
         </styles.CircleWrapper>
       </styles.Button>
     </Link>

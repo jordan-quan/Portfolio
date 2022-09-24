@@ -11,10 +11,6 @@ interface Props {
 }
 
 const Gallery = ({ data }: Props) => {
-  useEffect(() => {
-    cacheImages(data.map(({ imagePath }) => imagePath))
-  }, [])
-
   return (
     <styles.Gallery>
       <styles.TwoTall>

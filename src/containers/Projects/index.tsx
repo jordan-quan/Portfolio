@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { PROJECTS } from 'constants/projects'
-import { cacheImages } from 'utils'
 import Pagination from 'components/Pagination'
 import * as styles from './styles'
 import HomeButton from 'components/HomeButton'
@@ -17,13 +15,6 @@ const ProjectContainer = () => {
 
   const next = list[index + 1]
   const previous = list[index - 1]
-
-  useEffect(() => {
-    if (project) {
-      const { mainImage, images } = project
-      cacheImages([mainImage, ...(images ? images : [])])
-    }
-  }, [project])
 
   if (project === undefined) return <></>
 

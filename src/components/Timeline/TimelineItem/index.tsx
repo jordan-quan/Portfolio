@@ -14,23 +14,6 @@ const TimelineItem = ({
   index,
   setMinPathLength
 }: TimelineItemProps) => {
-  const Svg = () => (
-    <svg viewBox="0 0 430 300" width="100%" height="100%">
-      <defs>
-        <mask id="maskThumbnail">
-          <polygon points="430, 300 0, 270 0, 30 430, 0 430, 300" fill="#fff"></polygon>
-        </mask>
-      </defs>
-      <image
-        href={imagePath}
-        mask="url(#maskThumbnail)"
-        width="100%"
-        height="100%"
-        preserveAspectRatio="xMidYMid slice"
-      />
-    </svg>
-  )
-
   return (
     <styles.Link to={link}>
       <styles.CardWrapper whileHover="hover" initial="initial" animate="animate">
@@ -85,7 +68,20 @@ const TimelineItem = ({
             index={index}
             variants={styles.ImageVariants}
             transition={styles.ImageTransition}>
-            <Svg />
+            <svg viewBox="0 0 430 300" width="100%" height="100%">
+              <defs>
+                <mask id="maskThumbnail">
+                  <polygon points="430, 300 0, 270 0, 30 430, 0 430, 300" fill="#fff"></polygon>
+                </mask>
+              </defs>
+              <image
+                href={imagePath}
+                mask="url(#maskThumbnail)"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid slice"
+              />
+            </svg>
           </styles.Image>
         </styles.Card>
       </styles.CardWrapper>

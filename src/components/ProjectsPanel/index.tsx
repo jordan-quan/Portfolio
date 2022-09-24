@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react'
-import { cacheImages } from 'utils/cacheImages'
 import PerspectiveCard from 'components/PerspectiveCard'
 import { Card } from 'ts/interfaces'
 
@@ -10,11 +8,6 @@ type ProjectsPanelProps = {
 }
 
 const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
-  useEffect(() => {
-    cacheImages(cardList.map(({ imagePath }) => imagePath))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   return (
     <styles.Gallery>
       <styles.HeaderContent>

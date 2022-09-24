@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 
-import { cacheImages } from 'utils/cacheImages'
 import TimelineItem from 'components/Timeline/TimelineItem'
 import { Card } from 'ts/interfaces'
 
@@ -27,10 +26,6 @@ const Timeline = ({ cardList }: TimelineProps) => {
     damping: 100,
     restDelta: 0.001
   })
-
-  useEffect(() => {
-    cacheImages(cardList.map(({ imagePath }) => imagePath))
-  }, [cardList])
 
   return (
     <styles.Container>

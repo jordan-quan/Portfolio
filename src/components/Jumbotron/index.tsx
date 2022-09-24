@@ -6,16 +6,12 @@ import useWindowDimensions from 'utils/useWindowDimensions'
 const Jumbotron = () => {
   const { width } = useWindowDimensions()
 
-  const Circle = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="50" fill="white" />
-    </svg>
-  )
-
   return (
     <styles.Container>
       <styles.CircleWrapper width={width / 2.5}>
-        <Circle />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="50" fill="white" />
+        </svg>
       </styles.CircleWrapper>
       <styles.HeaderContent>
         <styles.Title tag="h1">Hello,</styles.Title>
