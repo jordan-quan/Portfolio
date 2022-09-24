@@ -9,16 +9,14 @@ import HomeButton from 'components/HomeButton'
 
 const ProjectContainer = () => {
   const { id: route } = useParams()
+
   const list = PROJECTS.filter(({ display }) => display)
 
   const index = list.findIndex(({ id }) => id === route)
   const project = list[index]
 
-  const nextIndex = (index + 1) % list.length
-  const prevIndex = index === 0 ? list.length - 1 : index - 1
-
-  const next = list[nextIndex]
-  const previous = list[prevIndex]
+  const next = list[index + 1]
+  const previous = list[index - 1]
 
   useEffect(() => {
     if (project) {
@@ -31,15 +29,15 @@ const ProjectContainer = () => {
 
   const {
     name,
-    id,
-    url,
+    // id,
+    // url,
     tasks,
     description,
     subtitle,
     stack,
     mainImage,
     images,
-    github,
+    // github,
     year,
     colours
   } = project
@@ -61,22 +59,24 @@ const ProjectContainer = () => {
       </styles.Jumbotron>
 
       <styles.Content>
-        <styles.Image2 src={images ? images[0] : mainImage} />
+        <styles.Image2Wrapper tag="div">
+          <styles.Image2 tag="img" src={images ? images[0] : mainImage} />
+        </styles.Image2Wrapper>
         <styles.Details>
           <styles.Text>{description}</styles.Text>
-          <styles.TextHeader>Year</styles.TextHeader>
-          <styles.Text>{year}</styles.Text>
-          <styles.TextHeader>Tasks</styles.TextHeader>
+          <styles.TextHeader tag="h4">Year</styles.TextHeader>
+          <styles.Text offset="-175px">{year}</styles.Text>
+          <styles.TextHeader tag="h4">Tasks</styles.TextHeader>
           <styles.List>
-            <styles.Text>
+            <styles.Text offset="-175px">
               {tasks.map((task, index) => (
                 <styles.ListItem key={index.toString()}>{task}</styles.ListItem>
               ))}
             </styles.Text>
           </styles.List>
-          <styles.TextHeader>Tech Stack</styles.TextHeader>
+          <styles.TextHeader tag="h4">Tech Stack</styles.TextHeader>
           <styles.List>
-            <styles.Text>
+            <styles.Text offset="-175px">
               {stack.map((tech, index) => (
                 <styles.ListItem key={index.toString()}>{tech}</styles.ListItem>
               ))}
@@ -86,20 +86,25 @@ const ProjectContainer = () => {
       </styles.Content>
 
       <Pagination
-        previous={{
-          title: previous.name,
-          imagePath: previous.mainImage,
-          link: previous.url,
-          colours: previous.colours
-        }}
-        next={{
-          title: next.name,
-          imagePath: next.mainImage,
-          link: next.url,
-          colours: next.colours
-        }}
+        previous={
+          previous && {
+            title: previous.name,
+            subtitle: 'Previous Project',
+            imagePath: previous.mainImage,
+            link: previous.url,
+            colours: previous.colours
+          }
+        }
+        next={
+          next && {
+            title: next.name,
+            subtitle: 'Next Project',
+            imagePath: next.mainImage,
+            link: next.url,
+            colours: next.colours
+          }
+        }
         color={colours.primary}
-        type="project"
       />
     </styles.Container>
   )

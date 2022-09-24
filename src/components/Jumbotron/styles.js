@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 import { motion } from 'framer-motion'
+import AnimatedBlock from 'components/AnimatedBlock'
+import AnimatedText from 'components/AnimatedText'
 
 export const Container = styled.div`
   position: relative;
@@ -20,13 +22,14 @@ export const CircleWrapper = styled.div`
   z-index: 1;
 `
 
+export const AnimateButton = styled(AnimatedText)``
+
 export const ButtonWrapper = styled(motion.div)`
   margin-left: -2rem;
   width: 23rem;
 `
 
 export const HeaderContent = styled.div`
-  // margin-left: 19rem;
   margin-left: 12%;
   flex-direction: column;
   font-size: 20px;
@@ -34,18 +37,22 @@ export const HeaderContent = styled.div`
   z-index: 2;
 `
 
-export const Title = styled.h1`
+export const Title = styled(AnimatedBlock)`
   text-transform: lowercase;
+  width: fit-content;
+  height: 100%;
   font-size: 50px;
   font-weight: 600;
+  line-height: 65px;
+  margin-bottom: 10px;
 `
 
 export const ColorText = styled.span`
   color: #404ba9;
 `
 
-export const Subtitle = styled.h4`
-  margin: 20px 0px 50px;
+export const Subtitle = styled(AnimatedText)`
+  margin: 40px 0px;
   font-weight: 200;
   font-size: 16px;
   width: 45rem;

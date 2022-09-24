@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 
 export const Conatiner = styled.div`
   position: relative;
-  width: fit-content;
+  width: 100%;
+  height: 100%;
 `
 
 export const Overlay = styled(motion.div)`

@@ -14,11 +14,8 @@ const ExperienceContainer = () => {
   const index = list.findIndex(({ id }) => id === route)
   const experience = list[index]
 
-  const nextIndex = (index + 1) % list.length
-  const prevIndex = index === 0 ? list.length - 1 : index - 1
-
-  const next = list[nextIndex]
-  const previous = list[prevIndex]
+  const next = list[index + 1]
+  const previous = list[index - 1]
 
   useEffect(() => {
     if (experience) {
@@ -35,11 +32,11 @@ const ExperienceContainer = () => {
     position,
     images,
     timeline,
-    logo,
+    // logo,
     mainImage,
     colours,
     description,
-    stack,
+    // stack,
     tasks,
     acheivements
   } = experience
@@ -61,22 +58,24 @@ const ExperienceContainer = () => {
       </styles.Jumbotron>
 
       <styles.Content>
-        <styles.Image2 src={images ? images[0] : mainImage} />
+        <styles.Image2Wrapper tag="div">
+          <styles.Image2 tag="img" src={images ? images[0] : mainImage} />
+        </styles.Image2Wrapper>
         <styles.Details>
           <styles.Text>{description}</styles.Text>
-          <styles.TextHeader>Timeline</styles.TextHeader>
-          <styles.Text>{getTimeframeYears(timeline[0])}</styles.Text>
-          <styles.TextHeader>Tasks</styles.TextHeader>
+          <styles.TextHeader tag="h4">Timeline</styles.TextHeader>
+          <styles.Text offset="-175px">{getTimeframeYears(timeline[0])}</styles.Text>
+          <styles.TextHeader tag="h4">Tasks</styles.TextHeader>
           <styles.List>
-            <styles.Text>
+            <styles.Text offset="-175px">
               {tasks.map((task, index) => (
                 <styles.ListItem key={index.toString()}>{task}</styles.ListItem>
               ))}
             </styles.Text>
           </styles.List>
-          <styles.TextHeader>Impacts</styles.TextHeader>
+          <styles.TextHeader tag="h4">Impacts</styles.TextHeader>
           <styles.List>
-            <styles.Text>
+            <styles.Text offset="-175px">
               {acheivements.map((acheivement, index) => (
                 <styles.ListItem key={index.toString()}>{acheivement}</styles.ListItem>
               ))}
@@ -86,20 +85,25 @@ const ExperienceContainer = () => {
       </styles.Content>
 
       <Pagination
-        previous={{
-          title: previous.employer,
-          imagePath: previous.mainImage,
-          link: previous.url,
-          colours: previous.colours
-        }}
-        next={{
-          title: next.employer,
-          imagePath: next.mainImage,
-          link: next.url,
-          colours: next.colours
-        }}
+        previous={
+          previous && {
+            title: previous.employer,
+            subtitle: 'Previous Experience',
+            imagePath: previous.mainImage,
+            link: previous.url,
+            colours: previous.colours
+          }
+        }
+        next={
+          next && {
+            title: next.employer,
+            subtitle: 'Next Experience',
+            imagePath: next.mainImage,
+            link: next.url,
+            colours: next.colours
+          }
+        }
         color={colours.primary}
-        type="experience"
       />
     </styles.Container>
     // </AnimatePresence>

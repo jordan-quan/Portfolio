@@ -18,6 +18,7 @@ const TimelineBranch = ({ index, onAnimated }: HeadingProps) => {
     if (isTextInView) {
       onAnimated && onAnimated()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTextInView])
 
   return (

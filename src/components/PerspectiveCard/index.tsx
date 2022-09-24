@@ -97,7 +97,7 @@ const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours 
 
   return (
     <styles.Link ref={cardRef} to={link}>
-      <styles.PerspectiveWrapper tag="div">
+      <styles.PerspectiveWrapper>
         <styles.Card
           initial="initial"
           whileHover="hover"

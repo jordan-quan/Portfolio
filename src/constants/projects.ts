@@ -3,7 +3,6 @@ import { Project } from 'ts/interfaces'
 import pdfImage from 'assets/images/projects/pdfsplitter/pdfsplitter.jpg'
 import portfolioImage from 'assets/images/projects/portfolio/portfolio.jpg'
 import lcboImage from 'assets/images/projects/LCBO/lcbo.jpeg'
-import telus from 'assets/images/experiences/Telus/telusphone.jpeg'
 
 export const PROJECTS: Project[] = [
   {

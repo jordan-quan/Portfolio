@@ -44,11 +44,12 @@ const Timeline = ({ cardList }: TimelineProps) => {
     return () => {
       unsubscribeY()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minPathLength])
 
   useEffect(() => {
     cacheImages(cardList.map(({ imagePath }) => imagePath))
-  }, [])
+  }, [cardList])
 
   return (
     <styles.Container>

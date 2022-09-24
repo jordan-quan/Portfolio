@@ -5,6 +5,7 @@ export type CardColours = {
 
 export type PageLink = {
   title: string
+  subtitle: string
   imagePath: string
   link: string
   colours: CardColours

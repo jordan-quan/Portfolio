@@ -34,19 +34,20 @@ const AnimatedText = ({
     if (isTextInView) {
       onAnimated && onAnimated()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTextInView])
 
   const variants = {
     initial: {
       opacity: 0,
-      y: 25
+      y: 40
     },
     animate: {
       opacity: 1,
       y: 0
     },
     transition: {
-      duration: 0.5
+      duration: 0.75
     }
   }
 

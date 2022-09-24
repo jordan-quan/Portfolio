@@ -1,4 +1,3 @@
-import React from 'react'
 import Button from 'components/Button'
 
 import * as styles from './styles'
@@ -19,17 +18,19 @@ const Jumbotron = () => {
         <Circle />
       </styles.CircleWrapper>
       <styles.HeaderContent>
-        <styles.Title>Hello,</styles.Title>
-        <styles.Title>
+        <styles.Title tag="h1">Hello,</styles.Title>
+        <styles.Title tag="h1">
           I'm <styles.ColorText>Jordan Quan</styles.ColorText>.
         </styles.Title>
-        <styles.Subtitle>
+        <styles.Subtitle tag="h4">
           Im a passionate developer who loves to create magical experiences for those surfing the
           web.
         </styles.Subtitle>
-        <styles.ButtonWrapper whileHover="hover" initial="initial" animate="animate">
-          <Button link="about/" text="Hear my Story" />
-        </styles.ButtonWrapper>
+        <styles.AnimateButton tag="div">
+          <styles.ButtonWrapper whileHover="hover" initial="initial" animate="animate">
+            <Button link="about/" text="Hear my Story" />
+          </styles.ButtonWrapper>
+        </styles.AnimateButton>
       </styles.HeaderContent>
     </styles.Container>
   )

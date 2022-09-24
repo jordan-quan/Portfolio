@@ -5,35 +5,23 @@ import * as styles from './styles'
 
 interface HeadingProps {
   children: React.ReactNode
-  tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'a' | 'div' | 'path' | 'img'
-  offset?: string
-  delay?: number
-  onAnimated?: () => void
 }
 
-const AnimatedBlock = ({
-  children,
-  offset,
-  tag,
-  delay = 0,
-  onAnimated,
-  ...props
-}: HeadingProps) => {
+const AnimatedWrapper = ({ children, ...props }: HeadingProps) => {
   const textRef = useRef(null)
   const isTextInView = useInView(textRef, {
-    margin: `0px 0px ${offset || '-200px'} 0px`,
+    margin: `0px 0px -200px 0px`,
     once: true
   })
   const controls = useAnimation()
 
-  const Component = motion[tag]
+  const Component = motion.div
 
   const sequence = async () => {
     await controls.start({
       scaleX: 1,
       transition: {
-        duration: 0.5,
-        delay: delay
+        duration: 0.5
       }
     })
 
@@ -54,7 +42,6 @@ const AnimatedBlock = ({
   useEffect(() => {
     if (isTextInView) {
       sequence()
-      onAnimated && onAnimated()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTextInView])
@@ -65,7 +52,7 @@ const AnimatedBlock = ({
         ref={textRef}
         initial={{ opacity: 0 }}
         animate={isTextInView && { opacity: 1 }}
-        transition={{ duration: 0.25, delay: 0.5 + delay }}
+        transition={{ duration: 0.25, delay: 0.5 }}
         {...props}>
         {children}
       </Component>
@@ -81,4 +68,4 @@ const AnimatedBlock = ({
   )
 }
 
-export default AnimatedBlock
+export default AnimatedWrapper
