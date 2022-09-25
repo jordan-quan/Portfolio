@@ -7,7 +7,7 @@ import * as styles from './styles'
 
 const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours }: Card) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [entryCount, setEntryCount] = useState(0)
+  const entryCount = useRef(0)
   const controls = useAnimation()
 
   const cardRef = useRef<HTMLInputElement>(null)
@@ -38,7 +38,7 @@ const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours 
     const rX = transform(rotateXbounded, [0, 1], [-angle, angle])
     const rY = transform(rotateYbounded, [0, 1], [-angle, angle])
 
-    if (entryCount < 50) {
+    if (entryCount.current < 50) {
       controls.start({
         rotateX: rX,
         rotateY: rY,
@@ -46,7 +46,7 @@ const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours 
           duration: 0.03
         }
       })
-      setEntryCount(entryCount + 1)
+      entryCount.current++
     } else {
       controls.start({
         rotateX: rX,
@@ -110,7 +110,7 @@ const PerspectiveCard = ({ title, subtitle, timeframe, link, imagePath, colours 
                 duration: 0.2
               }
             })
-            setEntryCount(0)
+            entryCount.current = 0
           }}
           onPointerMove={onMove}
           style={{ rotateX, rotateY }}
