@@ -56,7 +56,7 @@ const Contact = () => {
       <styles.Container>
         <styles.Header>
           <styles.Title tag="h1">let's chat</styles.Title>
-          <styles.Subtitle tag="h4">
+          <styles.Subtitle tag="h4" delay={0.25}>
             Feel free to reach out if you're interested in working together {':)'}
           </styles.Subtitle>
         </styles.Header>
@@ -95,7 +95,7 @@ const Contact = () => {
       <styles.Footer
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5 }}>
+        transition={{ delay: 0.75, duration: 1 }}>
         <styles.FooterLinks>
           <styles.Trademark>© 2022 - ALL RIGHTS RESERVED - Jordan Quan 2022</styles.Trademark>
           <styles.SocialSection>
