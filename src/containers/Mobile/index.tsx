@@ -13,7 +13,6 @@ const Mobile = () => {
     const containerHeight = containerRef.current?.clientHeight
 
     if (containerHeight && containerHeight <= height) {
-      console.log(containerHeight, 'containerHeight')
       setFooterHeight(height - containerHeight)
     } else setFooterHeight(100)
   }, [])
