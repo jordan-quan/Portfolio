@@ -1,5 +1,5 @@
 import { Card } from 'ts/interfaces'
-import Button from 'components/Button'
+import LinkButton from 'components/LinkButton'
 import TimelineBranch from 'components/TimelineBranch'
 import * as styles from './styles'
 
@@ -54,7 +54,7 @@ const TimelineItem = ({
               <styles.Subtitle>{subtitle}</styles.Subtitle>
             </styles.CardInfo>
             <styles.ButtonWrapper index={index}>
-              <Button text="View Experience" link={link} />
+              <LinkButton text="View Experience" link={link} />
             </styles.ButtonWrapper>
           </styles.Content>
 

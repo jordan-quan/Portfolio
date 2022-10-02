@@ -5,6 +5,8 @@ import { cacheImages } from 'utils'
 import { PROJECTS } from 'constants/projects'
 import Pagination from 'components/Pagination'
 import HomeButton from 'components/HomeButton'
+import KeyboardPNG from 'assets/images/projects/keyboard.png'
+import MousePNG from 'assets/images/projects/mouse.png'
 import * as styles from './styles'
 
 const ProjectContainer = () => {
@@ -37,7 +39,7 @@ const ProjectContainer = () => {
     stack,
     mainImage,
     images,
-    // github,
+    github,
     year,
     colours
   } = project
@@ -61,24 +63,28 @@ const ProjectContainer = () => {
       <styles.Content>
         <styles.Image2Wrapper tag="div">
           <styles.Image2 tag="img" src={images ? images[0] : mainImage} />
+
+          <styles.Keyboard src={KeyboardPNG} />
+          <styles.Mouse
+            src={MousePNG}
+            animate={{ x: ['0px', '-20px', '20px', '0px'], rotateZ: [0, -2, 2, 0] }}
+            transition={{ duration: 5, delay: 5, repeatDelay: 5, repeat: Infinity }}
+          />
         </styles.Image2Wrapper>
         <styles.Details>
           <styles.Text>{description}</styles.Text>
           <styles.TextHeader tag="h4">Year</styles.TextHeader>
           <styles.Text offset="-175px">{year}</styles.Text>
+
+          <styles.TextHeader tag="h4">Tech Stack</styles.TextHeader>
+          <styles.Text offset="-175px">
+            {stack.reduce((acc, tech) => `${acc}\u00A0\u00A0/\u00A0\u00A0${tech} `).trim()}
+          </styles.Text>
           <styles.TextHeader tag="h4">Tasks</styles.TextHeader>
           <styles.List>
             <styles.Text offset="-175px">
               {tasks.map((task, index) => (
                 <styles.ListItem key={index.toString()}>{task}</styles.ListItem>
-              ))}
-            </styles.Text>
-          </styles.List>
-          <styles.TextHeader tag="h4">Tech Stack</styles.TextHeader>
-          <styles.List>
-            <styles.Text offset="-175px">
-              {stack.map((tech, index) => (
-                <styles.ListItem key={index.toString()}>{tech}</styles.ListItem>
               ))}
             </styles.Text>
           </styles.List>

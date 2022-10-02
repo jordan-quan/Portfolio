@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { cacheImages } from 'utils/cacheImages'
 import PerspectiveCard from 'components/PerspectiveCard'
-import Button from 'components/Button'
+import LinkButton from 'components/LinkButton'
 import { Card } from 'ts/interfaces'
 
 import * as styles from './styles'
@@ -30,7 +30,7 @@ const Gallery = ({ data }: Props) => {
       </styles.ThreeTall>
       <styles.Flex>
         <styles.ButtonWrapper initial="initial" whileHover="hover">
-          <Button link="projects/" text="View More" />
+          <LinkButton link="/projects" text="View More" />
         </styles.ButtonWrapper>
       </styles.Flex>
     </styles.Gallery>

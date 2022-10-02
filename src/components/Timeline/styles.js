@@ -18,7 +18,7 @@ export const Header = styled.div`
 export const HeaderContent = styled.div`
   position: absolute;
   top: 30%;
-  left: 12%;
+  left: 15%;
   flex-direction: column;
   font-size: 20px;
   color: #363636;

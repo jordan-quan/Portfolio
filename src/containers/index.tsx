@@ -6,6 +6,7 @@ import Experience from 'containers/Experience'
 import ProjectContainer from 'containers/Projects'
 import Home from 'containers/Home'
 import MobileContainer from 'containers/Mobile'
+import Contact from './Contact'
 
 const App = () => {
   const location = useLocation()
@@ -21,9 +22,10 @@ const App = () => {
         window.scrollTo(0, 0)
       }}>
       <Routes key={location.pathname} location={location}>
-        <Route path="/" element={<Home />} />
         <Route path="/experiences/:id" element={<Experience />} />
         <Route path="/projects/:id" element={<ProjectContainer />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>
   )

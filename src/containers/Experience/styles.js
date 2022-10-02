@@ -61,7 +61,7 @@ export const ListItem = styled.li`
 
 export const List = styled.ul`
   margin: 0px;
-  padding: 0px 15px;
+  padding: 0px 25px 0px 15px;
 `
 
 export const Text = styled(AnimatedText)`
@@ -91,4 +91,8 @@ export const Jumbotron = styled(motion.div)`
   justify-content: center;
   width: 100%;
   height: 100%;
+`
+
+export const Classlist = styled.div`
+  display: flex;
 `

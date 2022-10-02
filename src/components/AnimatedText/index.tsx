@@ -8,6 +8,7 @@ interface HeadingProps {
   initial?: object
   animate?: object
   transition?: object
+  delay?: number
   offset?: string
   onAnimated?: () => void
 }
@@ -17,6 +18,7 @@ const AnimatedText = ({
   children,
   transition,
   initial,
+  delay = 0,
   animate,
   offset,
   onAnimated,
@@ -47,7 +49,8 @@ const AnimatedText = ({
       y: 0
     },
     transition: {
-      duration: 0.75
+      duration: 0.75,
+      delay: delay
     }
   }
 

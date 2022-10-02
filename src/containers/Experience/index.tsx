@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { EXPERIENCES } from 'constants/experiences'
-import { getTimeframeYears, cacheImages } from 'utils'
+import { getTimeframeYears, cacheImages, chunk } from 'utils'
 import Pagination from 'components/Pagination'
 import * as styles from './styles'
 import HomeButton from 'components/HomeButton'
@@ -27,7 +27,7 @@ const ExperienceContainer = () => {
   if (experience === undefined) return <></>
 
   const {
-    // id,
+    id,
     employer,
     position,
     images,
@@ -63,15 +63,38 @@ const ExperienceContainer = () => {
           <styles.Text>{description}</styles.Text>
           <styles.TextHeader tag="h4">Timeline</styles.TextHeader>
           <styles.Text offset="-175px">{getTimeframeYears(timeline[0])}</styles.Text>
-          <styles.TextHeader tag="h4">Tasks</styles.TextHeader>
-          <styles.List>
-            <styles.Text offset="-175px">
-              {tasks.map((task, index) => (
-                <styles.ListItem key={index.toString()}>{task}</styles.ListItem>
-              ))}
-            </styles.Text>
-          </styles.List>
-          <styles.TextHeader tag="h4">Impacts</styles.TextHeader>
+          {id === 'ryerson' ? (
+            <>
+              <styles.TextHeader tag="h4">Key Classes</styles.TextHeader>
+              <styles.Classlist>
+                {chunk(tasks, 4).map((chunk) => (
+                  <styles.List>
+                    <styles.Text offset="-175px">
+                      {chunk.map((acheivement) => (
+                        <styles.ListItem>{acheivement}</styles.ListItem>
+                      ))}
+                    </styles.Text>
+                  </styles.List>
+                ))}
+              </styles.Classlist>
+            </>
+          ) : (
+            <>
+              {' '}
+              <styles.TextHeader tag="h4">Tasks</styles.TextHeader>
+              <styles.List>
+                <styles.Text offset="-175px">
+                  {tasks.map((task, index) => (
+                    <styles.ListItem key={index.toString()}>{task}</styles.ListItem>
+                  ))}
+                </styles.Text>
+              </styles.List>
+            </>
+          )}
+
+          <styles.TextHeader tag="h4">
+            {id === 'ryerson' ? 'Acheivements' : 'Highlights'}
+          </styles.TextHeader>
           <styles.List>
             <styles.Text offset="-175px">
               {acheivements.map((acheivement, index) => (

@@ -12,7 +12,7 @@ const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
     <styles.Gallery>
       <styles.HeaderContent>
         <styles.Title tag="h1">Created with passion.</styles.Title>
-        <styles.Subtitle tag="h4">These are some of my recent works.</styles.Subtitle>
+        <styles.Subtitle tag="h4">Take a look at some of my recent works.</styles.Subtitle>
       </styles.HeaderContent>
       <styles.Cards>
         {cardList.map((cardProps) => (
@@ -21,8 +21,6 @@ const ProjectsPanel = ({ cardList }: ProjectsPanelProps) => {
           </styles.Card>
         ))}
       </styles.Cards>
-
-      {/* <Button link="projects/" text="View More" /> */}
     </styles.Gallery>
   )
 }

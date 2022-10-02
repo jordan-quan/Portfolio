@@ -89,32 +89,8 @@ export const Subtitle = styled(AnimatedText)`
   }
 `
 
-export const IconContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: fit-content;
-  margin: 40px 0px;
+export const Icons = styled(AnimatedText)`
   margin-left: -10px;
-  max-width: 375px;
-`
-
-export const Icon = styled(AnimatedText)`
-  width: 48px;
-  height: 48px;
-
-  svg {
-    transform: scale(0.8);
-  }
-`
-
-export const GithubIcon = styled(AnimatedText)`
-  width: 48px;
-  height: 48px;
-
-  svg {
-    transform: scale(0.9);
-  }
 `
 
 export const Footer = styled.div`

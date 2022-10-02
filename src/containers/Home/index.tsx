@@ -9,13 +9,15 @@ import Jumbotron from 'components/Jumbotron'
 import * as styles from './styles'
 
 const Home = () => {
-  const projectCards: Card[] = PROJECTS.map(({ name, url, year, mainImage, ...rest }) => ({
-    link: url,
-    title: name,
-    timeframe: year.toString(),
-    imagePath: mainImage,
-    ...rest
-  }))
+  const projectCards: Card[] = PROJECTS.filter(({ display }) => display).map(
+    ({ name, url, year, mainImage, ...rest }) => ({
+      link: url,
+      title: name,
+      timeframe: year.toString(),
+      imagePath: mainImage,
+      ...rest
+    })
+  )
 
   const experienceCards: Card[] = EXPERIENCES.filter(({ display }) => display).map(
     ({ timeline, employer, position, url, mainImage, ...rest }) => ({
@@ -37,7 +39,7 @@ const Home = () => {
 
   return (
     <styles.Container
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}>

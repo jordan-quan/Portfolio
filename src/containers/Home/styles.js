@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 
 export const Container = styled(motion.div)`
   width: 100%;
+  overflow-x: hidden;
 `
 export const Footer = styled.div`
   background: black;

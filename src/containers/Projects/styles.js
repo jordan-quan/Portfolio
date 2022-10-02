@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-import AnimatedBlock from 'components/AnimatedBlock'
 import AnimatedText from 'components/AnimatedText'
 
 export const Title = styled.h1`
@@ -33,14 +32,30 @@ export const Image = styled.img`
 
 export const Image2 = styled.img`
   width: 100%;
-  height: 100%;
-  margin: 0px auto;
-  object-fit: cover;
+  margin: auto;
+  // box-shadow: 1.5rem 2.5rem 5rem 1rem rgb(0 0 0 / 20%);
 `
 
-export const Image2Wrapper = styled(AnimatedBlock)`
-  height: 100%;
+export const Keyboard = styled.img`
+  width: 90%;
+  bottom: 0px;
+  left: -45px;
+  position: absolute;
+`
+
+export const Mouse = styled(motion.img)`
+  width: 15%;
+  bottom: 0px;
+  right: -45px;
+  position: absolute;
+  transform: scaleY(1.2);
+`
+
+export const Image2Wrapper = styled(AnimatedText)`
   flex-basis: 100%;
+  position: relative;
+  margin: auto 50px;
+  padding-bottom: 100px;
 `
 
 export const Content = styled.div`

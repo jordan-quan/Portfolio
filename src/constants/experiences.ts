@@ -16,12 +16,14 @@ import markhamLogo from 'assets/images/experiences/Markham/markham.jpeg'
 
 import { Experience } from 'ts/interfaces'
 
+const isSenior = false
+
 export const EXPERIENCES: Experience[] = [
   {
     display: true,
     id: 'telus',
     employer: 'Telus Digital',
-    position: 'Senior Fullstack Developer',
+    position: isSenior ? 'Senior Fullstack Developer' : 'Fullstack Developer',
     url: 'experiences/telus',
     timeline: [[new Date(2020, 5 - 1), 'present']],
     logo: telusLogo,
@@ -36,15 +38,18 @@ export const EXPERIENCES: Experience[] = [
     stack: ['React JS', 'Redux', 'Node JS', 'Express', 'Postgres', 'Apollo GraphQL'],
     tasks: [
       'Participate in the full agile development lifecycle within a scrum team',
-      'Design and efficiently implement high quality software features',
-      'Create react components and respective unit tests using jest and enzyme',
-      'Create backend CRUD enpoints using Express JS',
-      'Participate in code reviews and provides critical and thoughtful guidance to best practices',
-      'Identifies scalability, security, and uptime opportunities to increase efficiency within the system',
-      'Collaborates with other software developers and members of their scrum team to deliver value for each sprint.'
+      'Effectively prioritize tasks and deliver high quality solutions in a timely manner',
+      'Design react components using lifecycle hooks to optimize UI/UX',
+      'Develop unit tests using jest and enzyme',
+      'Implement analytic events in different logic flows',
+      'Create complex animations using styled-components',
+      'Enable purposeful database interactions leveraging Express & GraphQL',
+      'Participate in code reviews and provide thoughtful guidance to best practices',
+      'Collaborate with other developers creating a fun productive environment',
+      ...(isSenior ? ['Mentor and support junior developers'] : [])
     ],
     acheivements: [
-      'Built an interactive drage and drop UI updating a database in real-time',
+      'Built an interactive drag and drop UI updating a database in real-time (see projects)',
       'Implemented a user-lock based concurrency control mechanism for a real-time admin panel',
       'Helped develop a highly scalable recursion based algorthim that maps users to the correct assist flow given changing user inputs'
     ],
@@ -99,27 +104,16 @@ export const EXPERIENCES: Experience[] = [
     },
     description:
       "My main role at this company was to maintain the firm's Sharepoint based Intranet.",
-    stack: [
-      'Sharepoint',
-      'Batch',
-      'Javascript',
-      'C#',
-      'Powershell',
-      'Node JS',
-      'Express JS',
-      'MySQL',
-      'React JS',
-      'REST'
-    ],
+    stack: ['Sharepoint', 'Bash', 'Javascript', 'Powershell', 'Node JS', 'MySQL'],
     tasks: [
       'Managed SharePoint intranet using PowerShell and SharePoint PnP',
-      'Communicated regularly with legal staff to gather requirements for custom applications and operational tasks',
-      'Built several PowerShell solutions to increase efficiency in the workplace',
-      'Constructed a Node JS environment with IIS on a production server enabling the firm to build custom solutions using modern technology',
-      'Developed and supported PDF Splitter Web Application (see projects) that is continuing to help eliminate hours of tedious work for legal staff'
+      'Built several web applications & PowerShell solutions to increase efficiency in the workplace',
+      'Communicated regularly with legal staff to gather user requirements'
     ],
     acheivements: [
-      'Over the course of an 8 month term, I built up a track record of both developing a pdf manipulating web application, and delivering 25+ custom solutions successfully eliminating hours of operational tasks in the firm.'
+      'Developed and supported a PDF Splitter Web Application (see projects) that is continuing to help eliminate hours of tedious work for legal staff',
+      'Constructed a Node JS environment with IIS on a production server enabling the firm to build web solutions using modern tech stacks',
+      'Delivered 25+ custom solutions successfully eliminating hours of operational tasks in the firm.'
     ],
     mainImage: oslerImage,
     images: [financialDistrict, oslerStreet]
@@ -136,17 +130,21 @@ export const EXPERIENCES: Experience[] = [
       primary: '#d4a965',
       secondary: '#dac6a2'
     },
-    tasks: [],
-    position: 'Student',
-    description: 'I am currently a Computer Science Student at Ryerson University.',
-    stack: [
+    tasks: [
       'Software Engineering',
+      'Computer Networks',
+      'Discrete Structures',
+      'Graph Theory',
+      'Algebra',
       'Data Structures & Algorithms',
-      'Web Development',
-      'Computer Networks'
+      'Machine Learning',
+      'Data Mining'
     ],
+    position: 'Student',
+    description: 'Graduated Ryerson University with an undergraduate degree in Computer Science.',
+    stack: [],
     acheivements: [
-      '2017-2020 Deans List',
+      '2017-2022 Deans List',
       '4.01 CGPA',
       'Awarded the Dr. Byrne H Philip Memorial Award for highest mark in Physics'
     ],
