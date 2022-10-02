@@ -119,5 +119,5 @@ export const Footer = styled(motion.div)`
   background: black;
   height: 125px;
   width: 100%;
-  // padding-top: 10px;
+  z-index: 30;
 `

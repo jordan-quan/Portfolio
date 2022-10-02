@@ -1,18 +1,14 @@
-import ryersonLogo from 'assets/images/experiences/Ryerson/ryerson.png'
 import ryersonImage from 'assets/images/experiences/Ryerson/building.jpeg'
-import campus from 'assets/images/experiences/Ryerson/campus.jpeg'
+import ryersonThumbnail from 'assets/images/experiences/Ryerson/thumbnails/building.jpg'
 import ryersonSign from 'assets/images/experiences/Ryerson/sign.jpeg'
 
-import oslerLogo from 'assets/images/experiences/Osler/osler.jpeg'
 import oslerImage from 'assets/images/experiences/Osler/building.jpeg'
-import oslerStreet from 'assets/images/experiences/Osler/street.jpeg'
+import oslerThumbnail from 'assets/images/experiences/Osler/thumbnails/building.jpg'
 import financialDistrict from 'assets/images/experiences/Osler/financialDistrict.jpeg'
 
-import telusLogo from 'assets/images/experiences/Telus/telus.jpeg'
 import telusImage from 'assets/images/experiences/Telus/building.jpeg'
 import telusBuilding from 'assets/images/experiences/Telus/telusBuilding.jpg'
-
-import markhamLogo from 'assets/images/experiences/Markham/markham.jpeg'
+import telusThumbnail from 'assets/images/experiences/Telus/thumbnails/building.jpg'
 
 import { Experience } from 'ts/interfaces'
 
@@ -26,8 +22,7 @@ export const EXPERIENCES: Experience[] = [
     position: isSenior ? 'Senior Fullstack Developer' : 'Fullstack Developer',
     url: 'experiences/telus',
     timeline: [[new Date(2020, 5 - 1), 'present']],
-    logo: telusLogo,
-    mainImage: telusImage,
+    logo: 'telusLogo',
     colours: {
       primary: '#6a60a6',
       secondary: '#a5a2da'
@@ -53,7 +48,7 @@ export const EXPERIENCES: Experience[] = [
       'Implemented a user-lock based concurrency control mechanism for a real-time admin panel',
       'Helped develop a highly scalable recursion based algorthim that maps users to the correct assist flow given changing user inputs'
     ],
-    images: [telusBuilding]
+    images: { main: telusImage, sub: telusBuilding, thumbnail: telusThumbnail }
   },
   {
     display: false,
@@ -65,7 +60,7 @@ export const EXPERIENCES: Experience[] = [
       [new Date(2020, 5 - 1), new Date(2020, 9 - 1)],
       [new Date(2021, 1 - 1), new Date(2021, 9 - 1)]
     ],
-    logo: telusLogo,
+    logo: 'telusLogo',
     colours: {
       primary: '',
       secondary: ''
@@ -87,7 +82,7 @@ export const EXPERIENCES: Experience[] = [
       'Implemented a user-lock based concurrency control mechanism for a real-time admin panel',
       'Helped develop a highly scalable recursion based algorthim that maps users to the correct assist flow given changing user inputs'
     ],
-    mainImage: telusImage
+    images: { main: telusImage, sub: ryersonSign, thumbnail: ryersonThumbnail }
   },
 
   {
@@ -96,7 +91,7 @@ export const EXPERIENCES: Experience[] = [
     employer: 'Osler, Harcourt & Hoskin',
     timeline: [[new Date(2020, 5 - 1), new Date(2021, 1 - 1)]],
     url: 'experiences/osler',
-    logo: oslerLogo,
+    logo: 'oslerLogo',
     position: 'Junior Web Developer',
     colours: {
       primary: '#a66060',
@@ -115,8 +110,7 @@ export const EXPERIENCES: Experience[] = [
       'Constructed a Node JS environment with IIS on a production server enabling the firm to build web solutions using modern tech stacks',
       'Delivered 25+ custom solutions successfully eliminating hours of operational tasks in the firm.'
     ],
-    mainImage: oslerImage,
-    images: [financialDistrict, oslerStreet]
+    images: { main: oslerImage, sub: financialDistrict, thumbnail: oslerThumbnail }
   },
 
   {
@@ -125,7 +119,7 @@ export const EXPERIENCES: Experience[] = [
     employer: 'Ryerson University',
     timeline: [[new Date(2017, 9 - 1), new Date(2022, 4 - 1)]],
     url: 'experiences/ryerson',
-    logo: ryersonLogo,
+    logo: 'ryersonLogo',
     colours: {
       primary: '#d4a965',
       secondary: '#dac6a2'
@@ -148,8 +142,7 @@ export const EXPERIENCES: Experience[] = [
       '4.01 CGPA',
       'Awarded the Dr. Byrne H Philip Memorial Award for highest mark in Physics'
     ],
-    mainImage: ryersonImage,
-    images: [ryersonSign, campus]
+    images: { main: ryersonImage, sub: ryersonSign, thumbnail: ryersonThumbnail }
   },
 
   {
@@ -158,7 +151,7 @@ export const EXPERIENCES: Experience[] = [
     employer: 'City of Markham',
     timeline: [[new Date(2017, 9 - 1), new Date(2022, 4 - 1)]],
     url: 'experiences/markham',
-    logo: markhamLogo,
+    logo: 'markhamLogo',
     colours: {
       primary: '',
       secondary: ''
@@ -178,6 +171,6 @@ export const EXPERIENCES: Experience[] = [
     ],
     stack: [],
     acheivements: [],
-    mainImage: markhamLogo
+    images: { main: '', sub: '', thumbnail: '' }
   }
 ]

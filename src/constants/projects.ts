@@ -2,11 +2,15 @@ import { Project } from 'ts/interfaces'
 
 import pdfImage from 'assets/images/projects/pdfsplitter/pdfsplitter.jpg'
 import pdfScreenshot from 'assets/images/projects/pdfsplitter/mac.png'
-import portfolioImage from 'assets/images/projects/portfolio/portfolio.jpg'
+import pdfThumbnail from 'assets/images/projects/pdfsplitter/thumbnails/pdfsplitter.jpg'
+
 import lcboImage from 'assets/images/projects/LCBO/lcbo.jpeg'
 import lcboScreenshot from 'assets/images/projects/LCBO/mac.png'
-import adminImage from 'assets/images/projects/adminpanel/workplace.png'
+import lcboThumbnail from 'assets/images/projects/LCBO//thumbnails/lcbo.jpg'
+
+import adminImage from 'assets/images/projects/adminpanel/workplace.jpg'
 import adminScreenshot from 'assets/images/projects/adminpanel/mac.png'
+import adminThumbnail from 'assets/images/projects/adminpanel/thumbnails/workplace.jpg'
 
 export const PROJECTS: Project[] = [
   {
@@ -31,8 +35,7 @@ export const PROJECTS: Project[] = [
       'Utilized lifecycle hooks, debounce functions & memoization optimizing UX performance'
     ],
     github: 'https://github.com/jordan-quan/Portfolio',
-    mainImage: adminImage,
-    images: [adminScreenshot]
+    images: { main: adminImage, sub: adminScreenshot, thumbnail: adminThumbnail }
   },
 
   {
@@ -57,8 +60,7 @@ export const PROJECTS: Project[] = [
     description: `Custom solution that populates production databases on a monthly basis with data from
     5,000+ Excel files with several sheets of varying structures.`,
     github: 'https://github.com/jordan-quan/lcbo',
-    mainImage: lcboImage,
-    images: [lcboScreenshot]
+    images: { main: lcboImage, sub: lcboScreenshot, thumbnail: lcboThumbnail }
   },
 
   {
@@ -82,8 +84,7 @@ export const PROJECTS: Project[] = [
     ],
     stack: ['Node JS', 'Express', 'IIS', 'MySQL', 'C#', 'Bootstrap'],
     description: 'A web app for legal staff to automate partitioning of large legal documents',
-    mainImage: pdfImage,
-    images: [pdfScreenshot]
+    images: { main: pdfImage, sub: pdfScreenshot, thumbnail: pdfThumbnail }
   },
   {
     display: false,
@@ -105,6 +106,6 @@ export const PROJECTS: Project[] = [
     ],
     description: 'A Personal Portfolio Website to highlight my achievements as a developer',
     github: 'https://github.com/jordan-quan/Portfolio',
-    mainImage: portfolioImage
+    images: { main: '', sub: '', thumbnail: '' }
   }
 ]

@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { EXPERIENCES } from 'constants/experiences'
-import { getTimeframeYears, cacheImages, chunk } from 'utils'
+import { getTimeframeYears, chunk } from 'utils'
 import Pagination from 'components/Pagination'
 import * as styles from './styles'
 import HomeButton from 'components/HomeButton'
@@ -17,39 +16,20 @@ const ExperienceContainer = () => {
   const next = list[index + 1]
   const previous = list[index - 1]
 
-  useEffect(() => {
-    if (experience) {
-      const { mainImage, images } = experience
-      cacheImages([mainImage, ...(images ? images : [])])
-    }
-  }, [experience])
-
   if (experience === undefined) return <></>
 
-  const {
-    id,
-    employer,
-    position,
-    images,
-    timeline,
-    // logo,
-    mainImage,
-    colours,
-    description,
-    // stack,
-    tasks,
-    acheivements
-  } = experience
+  const { id, employer, position, images, timeline, colours, description, tasks, acheivements } =
+    experience
 
   return (
     <styles.Container
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}>
+      transition={{ duration: 0.5 }}>
       <HomeButton />
       <styles.Jumbotron>
-        <styles.Image src={mainImage} />
+        <styles.Image src={images.main} />
         <styles.Header>
           <styles.Title>{employer}</styles.Title>
           <styles.Subtitle>{position}</styles.Subtitle>
@@ -57,7 +37,7 @@ const ExperienceContainer = () => {
       </styles.Jumbotron>
       <styles.Content>
         <styles.Image2Wrapper tag="div">
-          <styles.Image2 tag="img" src={images ? images[0] : mainImage} />
+          <styles.Image2 tag="img" src={images.sub} />
         </styles.Image2Wrapper>
         <styles.Details>
           <styles.Text>{description}</styles.Text>
@@ -80,7 +60,6 @@ const ExperienceContainer = () => {
             </>
           ) : (
             <>
-              {' '}
               <styles.TextHeader tag="h4">Tasks</styles.TextHeader>
               <styles.List>
                 <styles.Text offset="-175px">
@@ -110,7 +89,7 @@ const ExperienceContainer = () => {
           previous && {
             title: previous.employer,
             subtitle: 'Previous Experience',
-            imagePath: previous.mainImage,
+            imagePath: previous.images.thumbnail,
             link: previous.url,
             colours: previous.colours
           }
@@ -119,7 +98,7 @@ const ExperienceContainer = () => {
           next && {
             title: next.employer,
             subtitle: 'Next Experience',
-            imagePath: next.mainImage,
+            imagePath: next.images.thumbnail,
             link: next.url,
             colours: next.colours
           }

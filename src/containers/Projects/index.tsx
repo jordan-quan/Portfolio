@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { cacheImages } from 'utils'
 import { PROJECTS } from 'constants/projects'
 import Pagination from 'components/Pagination'
 import HomeButton from 'components/HomeButton'
@@ -20,39 +18,19 @@ const ProjectContainer = () => {
   const next = list[index + 1]
   const previous = list[index - 1]
 
-  useEffect(() => {
-    if (project) {
-      const { mainImage, images } = project
-      cacheImages([mainImage, ...(images ? images : [])])
-    }
-  }, [project])
-
   if (project === undefined) return <></>
 
-  const {
-    name,
-    // id,
-    // url,
-    tasks,
-    description,
-    subtitle,
-    stack,
-    mainImage,
-    images,
-    github,
-    year,
-    colours
-  } = project
+  const { name, tasks, description, subtitle, stack, images, year, colours } = project
 
   return (
     <styles.Container
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}>
+      transition={{ duration: 0.5 }}>
       <HomeButton />
       <styles.Jumbotron>
-        <styles.Image src={mainImage} />
+        <styles.Image src={images.main} />
 
         <styles.Header>
           <styles.Title>{name}</styles.Title>
@@ -62,7 +40,7 @@ const ProjectContainer = () => {
 
       <styles.Content>
         <styles.Image2Wrapper tag="div">
-          <styles.Image2 tag="img" src={images ? images[0] : mainImage} />
+          <styles.Image2 tag="img" src={images.sub} />
 
           <styles.Keyboard src={KeyboardPNG} />
           <styles.Mouse
@@ -96,7 +74,7 @@ const ProjectContainer = () => {
           previous && {
             title: previous.name,
             subtitle: 'Previous Project',
-            imagePath: previous.mainImage,
+            imagePath: previous.images.thumbnail,
             link: previous.url,
             colours: previous.colours
           }
@@ -105,7 +83,7 @@ const ProjectContainer = () => {
           next && {
             title: next.name,
             subtitle: 'Next Project',
-            imagePath: next.mainImage,
+            imagePath: next.images.thumbnail,
             link: next.url,
             colours: next.colours
           }

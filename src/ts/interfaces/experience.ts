@@ -10,9 +10,12 @@ export type Experience = {
   description: string
   stack: string[]
   logo: string
-  mainImage: string
   acheivements: string[]
   timeline: Timeframe[]
   colours: CardColours
-  images?: string[]
+  images: {
+    main: string
+    sub: string
+    thumbnail: string
+  }
 }

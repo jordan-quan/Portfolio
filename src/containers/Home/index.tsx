@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { PROJECTS } from 'constants/projects'
 import { EXPERIENCES } from 'constants/experiences'
 import { Card } from 'ts/interfaces'
-import { getTimeframeYears, cacheImages } from 'utils'
+import { getTimeframeYears } from 'utils'
 import Timeline from 'components/Timeline'
 import ProjectsPanel from 'components/ProjectsPanel'
 import Jumbotron from 'components/Jumbotron'
@@ -10,32 +9,25 @@ import * as styles from './styles'
 
 const Home = () => {
   const projectCards: Card[] = PROJECTS.filter(({ display }) => display).map(
-    ({ name, url, year, mainImage, ...rest }) => ({
+    ({ name, url, year, images, ...rest }) => ({
       link: url,
       title: name,
       timeframe: year.toString(),
-      imagePath: mainImage,
+      imagePath: images.thumbnail,
       ...rest
     })
   )
 
   const experienceCards: Card[] = EXPERIENCES.filter(({ display }) => display).map(
-    ({ timeline, employer, position, url, mainImage, ...rest }) => ({
+    ({ timeline, employer, position, url, images, ...rest }) => ({
       title: employer,
       timeframe: getTimeframeYears(timeline[0]),
       subtitle: position,
       link: url,
-      imagePath: mainImage,
+      imagePath: images.thumbnail,
       ...rest
     })
   )
-
-  useEffect(() => {
-    cacheImages([
-      ...experienceCards.map(({ imagePath }) => imagePath),
-      ...projectCards.map(({ imagePath }) => imagePath)
-    ])
-  }, [])
 
   return (
     <styles.Container

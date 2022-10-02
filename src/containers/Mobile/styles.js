@@ -7,15 +7,15 @@ import AnimatedText from 'components/AnimatedText'
 export const MobileConatiner = styled.div`
   overflow-y: hidden;
   overflow-x: hidden;
+  height: 100vh;
+  background: #f6f6f6;
 `
 
 export const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 130px 40px 140px;
-  background: #f6f6f6;
 
   @media (min-width: 600px) {
     padding: 130px 12% 140px;
@@ -33,7 +33,7 @@ export const Message = styled(AnimatedText)`
   }
 `
 
-export const CircleWrapper = styled.div`
+export const CircleWrapper = styled(motion.div)`
   position: absolute;
   width: ${({ width }) => width * 3.5}px;
   left: ${({ width }) => width}px;
@@ -93,10 +93,11 @@ export const Icons = styled(AnimatedText)`
   margin-left: -10px;
 `
 
-export const Footer = styled.div`
+export const Footer = styled(motion.div)`
   width: 100%;
   height: ${({ height }) => height}px;
   background: black;
   z-index: 2;
   position: absolute;
+  bottom: 0px;
 `

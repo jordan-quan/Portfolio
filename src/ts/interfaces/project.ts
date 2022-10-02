@@ -9,8 +9,11 @@ export type Project = {
   description: string
   subtitle: string
   stack: string[]
-  mainImage: string
-  images?: string[]
+  images: {
+    main: string
+    sub: string
+    thumbnail: string
+  }
   github?: string
   year: number
   colours: CardColours
