@@ -9,10 +9,10 @@ export const MobileConatiner = styled.div`
   overflow-x: hidden;
   height: 100vh;
   background: #f6f6f6;
+  position: relative;
 `
 
 export const Container = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   padding: 130px 40px 140px;
