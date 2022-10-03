@@ -9,6 +9,7 @@ export const MobileConatiner = styled.div`
   overflow-x: hidden;
   width: 100%;
   height: 100vh;
+  position: relative;
   background: #f6f6f6;
 `
 

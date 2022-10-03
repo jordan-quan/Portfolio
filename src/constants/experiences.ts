@@ -6,7 +6,7 @@ import oslerImage from 'assets/images/experiences/Osler/building.jpeg'
 import oslerThumbnail from 'assets/images/experiences/Osler/thumbnails/building.jpg'
 import financialDistrict from 'assets/images/experiences/Osler/financialDistrict.jpeg'
 
-import telusImage from 'assets/images/experiences/Telus/building.jpeg'
+import telusImage from 'assets/images/experiences/Telus/building.jpg'
 import telusBuilding from 'assets/images/experiences/Telus/telusBuilding.jpg'
 import telusThumbnail from 'assets/images/experiences/Telus/thumbnails/building.jpg'
 

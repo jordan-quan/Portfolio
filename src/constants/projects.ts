@@ -4,7 +4,7 @@ import pdfImage from 'assets/images/projects/pdfsplitter/pdfsplitter.jpg'
 import pdfScreenshot from 'assets/images/projects/pdfsplitter/mac.png'
 import pdfThumbnail from 'assets/images/projects/pdfsplitter/thumbnails/pdfsplitter.jpg'
 
-import lcboImage from 'assets/images/projects/LCBO/lcbo.jpeg'
+import lcboImage from 'assets/images/projects/LCBO/lcbo.jpg'
 import lcboScreenshot from 'assets/images/projects/LCBO/mac.png'
 import lcboThumbnail from 'assets/images/projects/LCBO//thumbnails/lcbo.jpg'
 
