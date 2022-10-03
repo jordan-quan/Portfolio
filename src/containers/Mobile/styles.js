@@ -7,6 +7,8 @@ import AnimatedText from 'components/AnimatedText'
 export const MobileConatiner = styled.div`
   overflow-y: hidden;
   overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
   background: #f6f6f6;
 `
 
@@ -98,4 +100,5 @@ export const Footer = styled(motion.div)`
   z-index: 2;
   position: absolute;
   bottom: 0px;
+  left: 0px;
 `
