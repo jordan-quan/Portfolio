@@ -80,7 +80,7 @@ const ProjectContainer = () => {
           previous && {
             title: previous.name,
             subtitle: 'Previous Project',
-            imagePath: previous.images.thumbnail,
+            imagePath: previous.images.main,
             link: previous.url,
             colours: previous.colours
           }
@@ -89,7 +89,7 @@ const ProjectContainer = () => {
           next && {
             title: next.name,
             subtitle: 'Next Project',
-            imagePath: next.images.thumbnail,
+            imagePath: next.images.main,
             link: next.url,
             colours: next.colours
           }

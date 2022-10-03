@@ -13,7 +13,7 @@ const Home = () => {
       link: url,
       title: name,
       timeframe: year.toString(),
-      imagePath: images.thumbnail,
+      imagePath: images.main,
       ...rest
     })
   )
@@ -24,7 +24,7 @@ const Home = () => {
       timeframe: getTimeframeYears(timeline[0]),
       subtitle: position,
       link: url,
-      imagePath: images.thumbnail,
+      imagePath: images.main,
       ...rest
     })
   )

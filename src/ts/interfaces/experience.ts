@@ -16,6 +16,5 @@ export type Experience = {
   images: {
     main: string
     sub: string
-    thumbnail: string
   }
 }

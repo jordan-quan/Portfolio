@@ -12,7 +12,6 @@ export type Project = {
   images: {
     main: string
     sub: string
-    thumbnail: string
   }
   github?: string
   year: number

@@ -1,14 +1,11 @@
 import ryersonImage from 'assets/images/experiences/Ryerson/building.jpeg'
-import ryersonThumbnail from 'assets/images/experiences/Ryerson/thumbnails/building.jpg'
 import ryersonSign from 'assets/images/experiences/Ryerson/sign.jpeg'
 
 import oslerImage from 'assets/images/experiences/Osler/building.jpeg'
-import oslerThumbnail from 'assets/images/experiences/Osler/thumbnails/building.jpg'
 import financialDistrict from 'assets/images/experiences/Osler/financialDistrict.jpeg'
 
 import telusImage from 'assets/images/experiences/Telus/building.jpg'
 import telusBuilding from 'assets/images/experiences/Telus/telusBuilding.jpg'
-import telusThumbnail from 'assets/images/experiences/Telus/thumbnails/building.jpg'
 
 import { Experience } from 'ts/interfaces'
 
@@ -48,7 +45,7 @@ export const EXPERIENCES: Experience[] = [
       'Implemented a user-lock based concurrency control mechanism for a real-time admin panel',
       'Helped develop a highly scalable recursion based algorthim that maps users to the correct assist flow given changing user inputs'
     ],
-    images: { main: telusImage, sub: telusBuilding, thumbnail: telusThumbnail }
+    images: { main: telusImage, sub: telusBuilding }
   },
   {
     display: false,
@@ -82,7 +79,7 @@ export const EXPERIENCES: Experience[] = [
       'Implemented a user-lock based concurrency control mechanism for a real-time admin panel',
       'Helped develop a highly scalable recursion based algorthim that maps users to the correct assist flow given changing user inputs'
     ],
-    images: { main: telusImage, sub: ryersonSign, thumbnail: ryersonThumbnail }
+    images: { main: telusImage, sub: ryersonSign }
   },
 
   {
@@ -110,7 +107,7 @@ export const EXPERIENCES: Experience[] = [
       'Constructed a Node JS environment with IIS on a production server enabling the firm to build web solutions using modern tech stacks',
       'Delivered 25+ custom solutions successfully eliminating hours of operational tasks in the firm.'
     ],
-    images: { main: oslerImage, sub: financialDistrict, thumbnail: oslerThumbnail }
+    images: { main: oslerImage, sub: financialDistrict }
   },
 
   {
@@ -142,7 +139,7 @@ export const EXPERIENCES: Experience[] = [
       '4.01 CGPA',
       'Awarded the Dr. Byrne H Philip Memorial Award for highest mark in Physics'
     ],
-    images: { main: ryersonImage, sub: ryersonSign, thumbnail: ryersonThumbnail }
+    images: { main: ryersonImage, sub: ryersonSign }
   },
 
   {
@@ -171,6 +168,6 @@ export const EXPERIENCES: Experience[] = [
     ],
     stack: [],
     acheivements: [],
-    images: { main: '', sub: '', thumbnail: '' }
+    images: { main: '', sub: '' }
   }
 ]

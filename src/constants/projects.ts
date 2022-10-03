@@ -2,15 +2,12 @@ import { Project } from 'ts/interfaces'
 
 import pdfImage from 'assets/images/projects/pdfsplitter/pdfsplitter.jpg'
 import pdfScreenshot from 'assets/images/projects/pdfsplitter/mac.png'
-import pdfThumbnail from 'assets/images/projects/pdfsplitter/thumbnails/pdfsplitter.jpg'
 
 import lcboImage from 'assets/images/projects/LCBO/lcbo.jpg'
 import lcboScreenshot from 'assets/images/projects/LCBO/mac.png'
-import lcboThumbnail from 'assets/images/projects/LCBO//thumbnails/lcbo.jpg'
 
 import adminImage from 'assets/images/projects/adminpanel/workplace.jpg'
 import adminScreenshot from 'assets/images/projects/adminpanel/mac.png'
-import adminThumbnail from 'assets/images/projects/adminpanel/thumbnails/workplace.jpg'
 
 export const PROJECTS: Project[] = [
   {
@@ -35,7 +32,7 @@ export const PROJECTS: Project[] = [
       'Utilized lifecycle hooks, debounce functions & memoization optimizing UX performance'
     ],
     github: 'https://github.com/jordan-quan/Portfolio',
-    images: { main: adminImage, sub: adminScreenshot, thumbnail: adminThumbnail }
+    images: { main: adminImage, sub: adminScreenshot }
   },
 
   {
@@ -60,7 +57,7 @@ export const PROJECTS: Project[] = [
     description: `Custom solution that populates production databases on a monthly basis with data from
     5,000+ Excel files with several sheets of varying structures.`,
     github: 'https://github.com/jordan-quan/lcbo',
-    images: { main: lcboImage, sub: lcboScreenshot, thumbnail: lcboThumbnail }
+    images: { main: lcboImage, sub: lcboScreenshot }
   },
 
   {
@@ -84,7 +81,7 @@ export const PROJECTS: Project[] = [
     ],
     stack: ['Node JS', 'Express', 'IIS', 'MySQL', 'C#', 'Bootstrap'],
     description: 'A web app for legal staff to automate partitioning of large legal documents',
-    images: { main: pdfImage, sub: pdfScreenshot, thumbnail: pdfThumbnail }
+    images: { main: pdfImage, sub: pdfScreenshot }
   },
   {
     display: false,
@@ -106,6 +103,6 @@ export const PROJECTS: Project[] = [
     ],
     description: 'A Personal Portfolio Website to highlight my achievements as a developer',
     github: 'https://github.com/jordan-quan/Portfolio',
-    images: { main: '', sub: '', thumbnail: '' }
+    images: { main: '', sub: '' }
   }
 ]

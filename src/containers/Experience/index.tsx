@@ -94,7 +94,7 @@ const ExperienceContainer = () => {
           previous && {
             title: previous.employer,
             subtitle: 'Previous Experience',
-            imagePath: previous.images.thumbnail,
+            imagePath: previous.images.main,
             link: previous.url,
             colours: previous.colours
           }
@@ -103,7 +103,7 @@ const ExperienceContainer = () => {
           next && {
             title: next.employer,
             subtitle: 'Next Experience',
-            imagePath: next.images.thumbnail,
+            imagePath: next.images.main,
             link: next.url,
             colours: next.colours
           }
