@@ -41,7 +41,7 @@ const Mobile = () => {
           <styles.Message tag="h4" delay={0.5}>
             The full mobile site is under development...
           </styles.Message>
-          <styles.Icons tag="div" delay={0.5}>
+          <styles.Icons tag="div" delay={0.5} offset="0px">
             <IconContainer />
           </styles.Icons>
         </styles.HeaderContent>

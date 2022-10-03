@@ -7,9 +7,7 @@ import AnimatedText from 'components/AnimatedText'
 export const MobileConatiner = styled.div`
   overflow-y: hidden;
   overflow-x: hidden;
-  height: 100vh;
   background: #f6f6f6;
-  position: relative;
 `
 
 export const Container = styled.div`
