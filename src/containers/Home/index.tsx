@@ -37,7 +37,6 @@ const Home = () => {
       transition={{ duration: 0.4 }}>
       <Jumbotron />
       <Timeline cardList={experienceCards} />
-      {/* <Gallery data={cards} /> */}
       <ProjectsPanel cardList={projectCards} />
       <styles.Footer>
         <styles.Line>

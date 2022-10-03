@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { EXPERIENCES } from 'constants/experiences'
-import { getTimeframeYears, cacheImages, chunk } from 'utils'
+import { getTimeframeYears, chunk } from 'utils'
 import Pagination from 'components/Pagination'
 import * as styles from './styles'
 import HomeButton from 'components/HomeButton'
@@ -16,10 +15,6 @@ const ExperienceContainer = () => {
 
   const next = list[index + 1]
   const previous = list[index - 1]
-
-  useEffect(() => {
-    cacheImages(Object.values(experience.images))
-  }, [experience])
 
   if (experience === undefined) return <></>
 
