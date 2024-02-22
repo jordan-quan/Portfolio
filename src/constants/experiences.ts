@@ -9,7 +9,7 @@ import telusBuilding from 'assets/images/experiences/Telus/telusBuilding.jpg'
 
 import { Experience } from 'ts/interfaces'
 
-const isSenior = false
+const isSenior = true
 
 export const EXPERIENCES: Experience[] = [
   {
